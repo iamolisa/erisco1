@@ -1,0 +1,187 @@
+{% extends "base.html" %}
+{% block title %}
+  {% if active %}{{ active.name }} — {% endif %}Products — Erisco Foods Limited
+{% endblock %}
+
+{% block content %}
+
+<!-- Page Hero -->
+<div class="page-hero">
+  <div class="page-hero-blob page-hero-blob-1"></div>
+  <div class="page-hero-blob page-hero-blob-2"></div>
+  <div class="container">
+    <div class="page-hero-label">Product Catalogue</div>
+    <h1>
+      {% if active %}
+        {{ active.icon|default('')|safe }} <span>{{ active.name }}</span>
+      {% else %}
+        Our <span>Products</span>
+      {% endif %}
+    </h1>
+    <p>
+      {% if active %}
+        {{ active.description }}
+      {% else %}
+        NAFDAC-certified, SON-approved. Every product crafted with quality Nigerian ingredients and the pride of 40+ years of experience.
+      {% endif %}
+    </p>
+    <div class="breadcrumb">
+      <a href="{{ url_for('index') }}">Home</a>
+      <span>›</span>
+      {% if active %}
+      <a href="{{ url_for('products') }}">Products</a>
+      <span>›</span>
+      <span>{{ active.name }}</span>
+      {% else %}
+      <span>Products</span>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+<section class="section">
+  <div class="container">
+
+    <!-- Category Tabs -->
+    <div class="product-tabs">
+      <a href="{{ url_for('products') }}" class="product-tab {% if not active_key %}active{% endif %}">
+        All Categories
+      </a>
+      {% for key, cat in categories.items() %}
+      <a href="{{ url_for('products', category=key) }}" class="product-tab {% if active_key == key %}active{% endif %}">
+        {{ cat.name }}
+      </a>
+      {% endfor %}
+    </div>
+
+    <!-- All Categories View -->
+    {% if not active %}
+      {% for key, cat in categories.items() %}
+      <div style="margin-bottom:64px;">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:28px;flex-wrap:wrap;gap:12px;">
+          <div>
+            <div class="section-label">{{ cat.name }}</div>
+            <h2 class="section-title" style="font-size:1.8rem;margin-bottom:8px;">{{ cat.icon|default('')|safe }} {{ cat.name }}</h2>
+            <p style="color:var(--mid-grey);font-size:0.9rem;">{{ cat.description }}</p>
+          </div>
+          <a href="{{ url_for('products', category=key) }}" class="btn btn-navy" style="flex-shrink:0;">
+            View All <i class="fa fa-arrow-right"></i>
+          </a>
+        </div>
+        <div class="product-grid">
+          {% for p in cat.products[:3] %}
+          <div class="product-card fade-up">
+            <div class="product-card-img">
+                {% if p.get('image') %}
+                  <img src="{{ p.get('image') }}" alt="{{ p.name }}" />
+                {% else %}
+                  <img src="{{ url_for('static', filename='img/erisco-logo.png') }}" alt="{{ p.name }}" />
+                {% endif %}
+                {% if p.tag %}
+                <span class="product-tag">{{ p.tag }}</span>
+                {% endif %}
+              </div>
+            <div class="product-card-body">
+              <h4>{{ p.name }}</h4>
+              <p>{{ p.desc }}</p>
+            </div>
+            <div class="product-card-footer">
+              <div class="nafdac-badge">NAFDAC Certified</div>
+              {% if key == 'tea' and p.slug %}
+              <a href="{{ url_for('tea_detail', slug=p.slug) }}" style="font-size:0.75rem;color:var(--navy);font-weight:600;">Details →</a>
+              {% else %}
+              <span style="font-size:0.75rem;color:var(--mid-grey);font-weight:500;">Made in Nigeria</span>
+              {% endif %}
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+      {% endfor %}
+
+    <!-- Single Category View -->
+    {% else %}
+      <div style="margin-bottom:32px;">
+        <div class="section-label">{{ active.name }}</div>
+        <h2 class="section-title" style="font-size:2rem;margin-bottom:8px;">{{ active.icon|default('')|safe }} {{ active.name }}</h2>
+        <p style="color:var(--mid-grey);">{{ active.description }}</p>
+      </div>
+      <div class="product-grid">
+        {% for p in active.products %}
+        <div class="product-card fade-up">
+            <div class="product-card-img">
+            {% if p.get('image') %}
+              <img src="{{ p.get('image') }}" alt="{{ p.name }}" />
+            {% else %}
+              <img src="{{ url_for('static', filename='img/erisco-logo.png') }}" alt="{{ p.name }}" />
+            {% endif %}
+            {% if p.tag %}
+            <span class="product-tag">{{ p.tag }}</span>
+            {% endif %}
+          </div>
+          <div class="product-card-body">
+            <h4>{{ p.name }}</h4>
+            <p>{{ p.desc }}</p>
+          </div>
+          <div class="product-card-footer">
+            <div class="nafdac-badge">NAFDAC Certified</div>
+            {% if active_key == 'tea' and p.slug %}
+            <a href="{{ url_for('tea_detail', slug=p.slug) }}" class="btn btn-navy" style="padding:6px 14px;font-size:0.75rem;">
+              Full Details <i class="fa fa-arrow-right"></i>
+            </a>
+            {% else %}
+            <span style="font-size:0.75rem;color:var(--mid-grey);font-weight:500;">Made in Nigeria</span>
+            {% endif %}
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    {% endif %}
+
+    <!-- Quality Assurance Bar -->
+    <div style="margin-top:64px;background:linear-gradient(135deg,var(--navy),var(--navy-dark));border-radius:var(--radius-lg);padding:40px;display:flex;flex-wrap:wrap;gap:32px;align-items:center;justify-content:space-between;">
+      <div>
+        <h3 style="font-family:var(--font-display);font-size:1.4rem;font-weight:900;color:var(--white);margin-bottom:8px;">Every Product, Every Batch — Certified.</h3>
+        <p style="color:rgba(255,255,255,0.65);font-size:0.9rem;max-width:500px;">Our QA lab tests every production batch. NAFDAC certification and SON approval are not achievements — they are ongoing commitments we renew with every product we make.</p>
+      </div>
+        <div style="display:flex;flex-wrap:wrap;gap:12px;">
+        <div style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-radius:50px;padding:10px 20px;color:var(--white);font-size:0.85rem;font-weight:600;">NAFDAC Certified</div>
+        <div style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-radius:50px;padding:10px 20px;color:var(--white);font-size:0.85rem;font-weight:600;">SON Approved</div>
+        <div style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-radius:50px;padding:10px 20px;color:var(--white);font-size:0.85rem;font-weight:600;">Made in Nigeria</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Where to buy -->
+<section class="section bg-light">
+  <div class="container">
+    <div class="text-center" style="margin-bottom:40px;">
+      <div class="section-label" style="justify-content:center;">Availability</div>
+      <h2 class="section-title">Where to Find Erisco Products</h2>
+      <p class="section-subtitle" style="margin:0 auto;">Our products are distributed across Nigeria through a network of authorised distributors and retail partners.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:20px;">
+      {% for channel, icon, desc in [
+        ("Supermarkets &amp; Hypermarkets","<i class='fa fa-store'></i>","Available in all major supermarket chains across Nigeria — Shoprite, Spar, Ebeano, Justrite, and more."),
+        ("Open Markets","<i class='fa fa-shopping-cart'></i>","Found in markets across all 36 states — from Mile 12 in Lagos to Wuse Market in Abuja."),
+        ("Neighbourhood Provision Stores","<i class='fa fa-home'></i>","The backbone of Nigerian distribution. Your local shop almost certainly stocks Erisco products."),
+        ("Distributors &amp; Wholesalers","<i class='fa fa-box-open'></i>","For bulk orders, wholesale pricing, and distribution partnerships — contact our sales team directly."),
+      ] %}
+      <div class="card fade-up" style="padding:28px;text-align:center;">
+        <div style="font-size:2.5rem;margin-bottom:12px;">{{ icon|safe }}</div>
+        <h4 style="font-weight:700;color:var(--navy);margin-bottom:8px;font-size:0.95rem;">{{ channel }}</h4>
+        <p style="font-size:0.825rem;color:var(--mid-grey);line-height:1.6;">{{ desc }}</p>
+      </div>
+      {% endfor %}
+    </div>
+    <div class="text-center" style="margin-top:32px;">
+      <a href="{{ url_for('contact') }}" class="btn btn-navy">
+        <i class="fa fa-map-marker-alt"></i> Find a Distributor Near You
+      </a>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

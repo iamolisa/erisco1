@@ -1,0 +1,214 @@
+{% extends "base.html" %}
+{% block title %}Contact Us — Erisco Foods Limited{% endblock %}
+
+{% block cta %}{% endblock %}
+
+{% block content %}
+
+<!-- Page Hero -->
+<div class="page-hero">
+  <div class="page-hero-blob page-hero-blob-1"></div>
+  <div class="page-hero-blob page-hero-blob-2"></div>
+  <div class="container">
+    <div class="page-hero-label">Get in Touch</div>
+    <h1>Contact <span>Erisco Foods</span></h1>
+    <p>Whether you're a distributor, retailer, journalist, or a customer with feedback — we want to hear from you. Our team responds within 2 business days.</p>
+    <div class="breadcrumb">
+      <a href="{{ url_for('index') }}">Home</a>
+      <span>›</span>
+      <span>Contact Us</span>
+    </div>
+  </div>
+</div>
+
+<section class="section">
+  <div class="container">
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for category, message in messages %}
+        <div class="alert alert-{{ category }}" style="margin-bottom:24px;">
+          {% if category == 'success' %}<i class="fa fa-check-circle"></i>{% else %}<i class="fa fa-exclamation-triangle"></i>{% endif %} {{ message }}
+        </div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+
+    <div class="contact-grid">
+
+      <!-- Contact Info -->
+      <div>
+        <div class="contact-info-card">
+          <h2>Let's Talk</h2>
+          <p class="subtitle">We're a Nigerian company with Nigerian values — we pick up the phone, we reply to emails, and we mean it when we say we're here for you.</p>
+
+          <div class="contact-detail">
+            <div class="contact-detail-icon"><i class="fa fa-map-marker-alt"></i></div>
+            <div class="contact-detail-text">
+              <strong>Head Office</strong>
+              <span>KM 45, Lagos-Abeokuta Expressway,<br>Sango-Otta, Ogun State, Nigeria</span>
+            </div>
+          </div>
+
+          <div class="contact-detail">
+            <div class="contact-detail-icon"><i class="fa fa-phone"></i></div>
+            <div class="contact-detail-text">
+              <strong>Phone</strong>
+              <span><a href="tel:+2348033001196">+234 (0) 803 300 1196</a></span>
+            </div>
+          </div>
+
+          <div class="contact-detail">
+            <div class="contact-detail-icon"><i class="fa fa-envelope"></i></div>
+            <div class="contact-detail-text">
+              <strong>General Enquiries</strong>
+              <span><a href="mailto:info@eriscofoodsltd.com.ng">info@eriscofoodsltd.com.ng</a></span>
+            </div>
+          </div>
+
+          <div class="contact-detail">
+            <div class="contact-detail-icon"><i class="fa fa-truck"></i></div>
+            <div class="contact-detail-text">
+              <strong>Distributor &amp; Wholesale Enquiries</strong>
+              <span><a href="mailto:sales@eriscofoodsltd.com.ng">sales@eriscofoodsltd.com.ng</a></span>
+            </div>
+          </div>
+
+          <div class="contact-detail">
+            <div class="contact-detail-icon"><i class="fa fa-clock"></i></div>
+            <div class="contact-detail-text">
+              <strong>Office Hours</strong>
+              <span>Monday – Friday: 8:00am – 5:00pm WAT<br>Saturday: 9:00am – 1:00pm WAT</span>
+            </div>
+          </div>
+
+          <div style="margin-top:32px;padding-top:24px;border-top:1px solid rgba(255,255,255,0.1);">
+            <p style="font-size:0.8rem;opacity:0.6;margin-bottom:12px;text-transform:uppercase;letter-spacing:0.08em;font-weight:600;">Follow Us</p>
+            <div style="display:flex;gap:10px;">
+              <a href="https://facebook.com/eriscofoodsng" target="_blank" class="footer-social"><i class="fab fa-facebook-f"></i></a>
+              <a href="https://x.com/eriscofoodsng" target="_blank" class="footer-social"><i class="fab fa-x-twitter"></i></a>
+              <a href="https://instagram.com/eriscofoodsng" target="_blank" class="footer-social"><i class="fab fa-instagram"></i></a>
+              <a href="https://youtube.com/@eriscofoodsng" target="_blank" class="footer-social"><i class="fab fa-youtube"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Quick contact cards -->
+          <div style="margin-top:24px;display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+          <div class="card" style="padding:20px;border-top:3px solid var(--green);">
+            <div style="font-size:1.5rem;margin-bottom:8px;"><i class="fa fa-truck"></i></div>
+            <h4 style="font-size:0.875rem;font-weight:700;color:var(--navy);margin-bottom:6px;">Distributors</h4>
+            <p style="font-size:0.775rem;color:var(--mid-grey);line-height:1.5;">Interested in distributing Erisco products? Select "Distributor Enquiry" in the form.</p>
+          </div>
+          <div class="card" style="padding:20px;border-top:3px solid var(--red);">
+            <div style="font-size:1.5rem;margin-bottom:8px;"><i class="fa fa-newspaper"></i></div>
+            <h4 style="font-size:0.875rem;font-weight:700;color:var(--navy);margin-bottom:6px;">Press &amp; Media</h4>
+            <p style="font-size:0.775rem;color:var(--mid-grey);line-height:1.5;">Media enquiries welcome. Select "Press &amp; Media" in the form for faster routing.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Contact Form -->
+      <div class="contact-form-card">
+        <h3>Send Us a Message</h3>
+
+        <form method="POST" action="{{ url_for('contact') }}" novalidate>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Full Name <span>*</span></label>
+              <input type="text" name="name" class="form-control" placeholder="Your full name" required />
+            </div>
+            <div class="form-group">
+              <label>Email Address <span>*</span></label>
+              <input type="email" name="email" class="form-control" placeholder="your@email.com" required />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label>Phone Number</label>
+              <input type="tel" name="phone" class="form-control" placeholder="+234 xxx xxx xxxx" />
+            </div>
+            <div class="form-group">
+              <label>Company / Organisation</label>
+              <input type="text" name="company" class="form-control" placeholder="Company name (optional)" />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Subject <span>*</span></label>
+            <select name="subject" class="form-control" required>
+              <option value="">Select a subject…</option>
+              <option value="General Enquiry">General Enquiry</option>
+              <option value="Distributor Enquiry">Distributor / Wholesale Enquiry</option>
+              <option value="Product Enquiry">Product Information</option>
+              <option value="Product Complaint">Product Complaint / Feedback</option>
+              <option value="Press & Media">Press &amp; Media Enquiry</option>
+              <option value="Careers">Careers / Recruitment</option>
+              <option value="Export Enquiry">Export / International Enquiry</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Message <span>*</span></label>
+            <textarea name="message" class="form-control" placeholder="Tell us how we can help you…" required></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;padding:16px;">
+            <i class="fa fa-paper-plane"></i> Send Message
+          </button>
+
+          <p style="font-size:0.775rem;color:var(--mid-grey);text-align:center;margin-top:12px;">
+            We respond to all messages within 2 business days. Your information is never shared.
+          </p>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Google Map placeholder -->
+<section class="section-sm" style="padding:0;">
+  <div style="width:100%;height:400px;background:linear-gradient(135deg,var(--light-grey),#e0e5ef);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:16px;">
+    <div style="font-size:3rem;"><i class="fa fa-map"></i></div>
+    <h3 style="color:var(--navy);font-weight:700;">Erisco Foods — Sango-Otta, Ogun State</h3>
+    <p style="color:var(--mid-grey);font-size:0.9rem;text-align:center;max-width:400px;">KM 45 Lagos-Abeokuta Expressway, Sango-Otta, Ogun State, Nigeria</p>
+    <a href="https://maps.google.com/?q=Sango-Otta+Ogun+State+Nigeria" target="_blank" class="btn btn-navy">
+      <i class="fa fa-map-marker-alt"></i> Open in Google Maps
+    </a>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section bg-light">
+  <div class="container">
+    <div class="text-center" style="margin-bottom:40px;">
+      <div class="section-label" style="justify-content:center;">FAQ</div>
+      <h2 class="section-title">Common Questions</h2>
+    </div>
+    <div style="max-width:720px;margin:0 auto;display:flex;flex-direction:column;gap:16px;">
+      {% set faqs = [
+        ("How can I become an Erisco distributor?","Contact our sales team at sales@eriscofoodsltd.com.ng or select 'Distributor Enquiry' in the contact form above. Our regional sales managers will reach out within 48 hours to discuss terms, minimum order quantities, and territory availability."),
+        ("Are all Erisco products NAFDAC certified?","Yes. Every product in our portfolio — from our flagship tomato paste to our tea range — carries valid NAFDAC certification and SON approval. We renew these certifications on schedule and our facility is subject to regular regulatory audits."),
+        ("Where are Erisco products manufactured?","All Erisco products are manufactured at our facility at KM 45, Lagos-Abeokuta Expressway, Sango-Otta, Ogun State, Nigeria. We are a 100% Nigerian-owned and operated company."),
+        ("Can I buy Erisco products for export?","Yes. Our products meet the quality thresholds required for export. Contact our team at info@eriscofoodsltd.com.ng and select 'Export / International Enquiry' to discuss volumes, documentation, and shipping arrangements."),
+        ("How do I report a product quality concern?","Select 'Product Complaint / Feedback' in the contact form and give us as much detail as possible — product name, batch code (found on the pack), and what you experienced. Our QA team investigates every reported issue."),
+      ] %}
+      {% for q, a in faqs %}
+      <details class="card" style="padding:0;cursor:pointer;">
+        <summary style="padding:20px 24px;font-weight:600;color:var(--navy);list-style:none;display:flex;justify-content:space-between;align-items:center;">
+          {{ q }}
+          <span style="color:var(--red);font-size:1.2rem;">+</span>
+        </summary>
+        <div style="padding:0 24px 20px;font-size:0.875rem;color:var(--mid-grey);line-height:1.7;border-top:1px solid var(--light-grey);">
+          <br>{{ a }}
+        </div>
+      </details>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% endblock %}

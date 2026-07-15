@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Erisco Foods Limited — Africa's leading indigenous food manufacturer. NAFDAC-certified, SON-approved, 40+ years of nourishing Nigeria." />
+  <title>{% block title %}Erisco Foods Limited{% endblock %}</title>
+
+  <!-- Favicon -->
+  <link rel="icon" href="{{ url_for('static', filename='img/erisco-logo.png') }}" type="image/png" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet" />
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+
+  {% block head %}{% endblock %}
+</head>
+<body>
+
+  <header class="site-header" id="siteHeader">
+  <!-- ══ Navigation ══ -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="{{ url_for('index') }}" class="navbar-logo">
+        <img src="{{ url_for('static', filename='img/erisco-logo.png') }}" alt="Erisco Foods Logo" />
+        <div class="navbar-logo-text">
+          <strong>Erisco Foods</strong>
+          <span>Limited — Est. 1981</span>
+        </div>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="{{ url_for('index') }}" class="nav-link">Home</a></li>
+
+        <li class="nav-item">
+          <a class="nav-link dropdown-toggle">About
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          </a>
+          <ul class="dropdown-menu">
+            <li><a href="{{ url_for('about') }}" class="dropdown-item"><span class="dropdown-item-icon"><i class="fa fa-building"></i></span>About Us</a></li>
+            <li><a href="{{ url_for('history') }}" class="dropdown-item"><span class="dropdown-item-icon"><i class="fa fa-calendar"></i></span>Our History</a></li>
+          </ul>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link dropdown-toggle">Products
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          </a>
+          <ul class="dropdown-menu">
+            <li><a href="{{ url_for('products') }}" class="dropdown-item"><span class="dropdown-item-icon"><i class="fa fa-shopping-cart"></i></span>All Products</a></li>
+            <li><a href="{{ url_for('products', category='tomato') }}" class="dropdown-item"><span class="dropdown-item-icon"></span>Tomato Paste</a></li>
+            <li><a href="{{ url_for('products', category='milk') }}" class="dropdown-item"><span class="dropdown-item-icon"></span>Milk &amp; Chocolate</a></li>
+            <li><a href="{{ url_for('products', category='beverages') }}" class="dropdown-item"><span class="dropdown-item-icon"></span>Beverages</a></li>
+            <li><a href="{{ url_for('products', category='tea') }}" class="dropdown-item"><span class="dropdown-item-icon"></span>Erisco Tea</a></li>
+            <li><a href="{{ url_for('products', category='seasoning') }}" class="dropdown-item"><span class="dropdown-item-icon"></span>Seasoning &amp; Spice</a></li>
+          </ul>
+        </li>
+
+        <li><a href="{{ url_for('brands') }}" class="nav-link">Brands</a></li>
+
+        <li class="nav-item">
+          <a class="nav-link dropdown-toggle">Wellness
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          </a>
+          <ul class="dropdown-menu">
+            <li><a href="{{ url_for('blog') }}" class="dropdown-item"><span class="dropdown-item-icon"><i class="fa fa-newspaper"></i></span>Wellness Blog</a></li>
+            <li><a href="{{ url_for('recipes') }}" class="dropdown-item"><span class="dropdown-item-icon"><i class="fa fa-utensils"></i></span>Recipes</a></li>
+          </ul>
+        </li>
+
+        <li><a href="{{ url_for('find_us') }}" class="nav-link">Find Us</a></li>
+        <li><a href="{{ url_for('contact') }}" class="nav-link nav-cta">Contact Us</a></li>
+      </ul>
+
+      <button class="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+
+    <!-- Mobile nav -->
+    <div class="mobile-nav">
+      <a href="{{ url_for('index') }}"><i class="fa fa-home"></i> Home</a>
+      <a href="{{ url_for('about') }}"><i class="fa fa-building"></i> About Us</a>
+      <a href="{{ url_for('history') }}"><i class="fa fa-calendar"></i> Our History</a>
+      <a href="{{ url_for('products') }}"><i class="fa fa-box-open"></i> All Products</a>
+      <a href="{{ url_for('brands') }}"><i class="fa fa-tags"></i> Our Brands</a>
+      <a href="{{ url_for('blog') }}"><i class="fa fa-newspaper"></i> Wellness Blog</a>
+      <a href="{{ url_for('recipes') }}"><i class="fa fa-utensils"></i> Recipes</a>
+      <a href="{{ url_for('find_us') }}"><i class="fa fa-map-marker-alt"></i> Find Us</a>
+      <a href="{{ url_for('contact') }}"><i class="fa fa-phone"></i> Contact Us</a>
+    </div>
+  </nav>
+  </header>
+
+  <!-- ══ Page Content ══ -->
+  {% block content %}{% endblock %}
+
+  <!-- ══ CTA Banner ══ -->
+  {% block cta %}
+  <section class="cta-section">
+    <div class="container" style="position:relative;z-index:2;">
+      <h2>Ready to Taste the Difference?</h2>
+      <p>Discover the full range of Erisco Foods products — trusted by millions of Nigerian families for over 40 years.</p>
+      <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
+        <a href="{{ url_for('products') }}" class="btn btn-outline" style="border-color:rgba(255,255,255,0.6);">
+          <i class="fa fa-th-large"></i> Explore Products
+        </a>
+        <a href="{{ url_for('contact') }}" class="btn" style="background:var(--white);color:var(--red);font-weight:700;">
+          <i class="fa fa-paper-plane"></i> Get in Touch
+        </a>
+      </div>
+    </div>
+  </section>
+  {% endblock %}
+
+  <!-- ══ Footer ══ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="{{ url_for('static', filename='img/erisco-logo.png') }}" alt="Erisco Foods" />
+          <p>Africa's leading indigenous food manufacturer. Nourishing Nigeria with quality, affordable food products since 1981.</p>
+          <div class="footer-socials">
+            <a href="https://facebook.com/eriscofoodsng" target="_blank" class="footer-social" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://x.com/eriscofoodsng" target="_blank" class="footer-social" title="X"><i class="fab fa-x-twitter"></i></a>
+            <a href="https://instagram.com/eriscofoodsng" target="_blank" class="footer-social" title="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://youtube.com/@eriscofoodsng" target="_blank" class="footer-social" title="YouTube"><i class="fab fa-youtube"></i></a>
+            <a href="https://linkedin.com/company/erisco-foods" target="_blank" class="footer-social" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="{{ url_for('about') }}">About Us</a></li>
+            <li><a href="{{ url_for('history') }}">Our History</a></li>
+            <li><a href="{{ url_for('brands') }}">Our Brands</a></li>
+            <li><a href="{{ url_for('contact') }}">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Products</h4>
+          <ul>
+            <li><a href="{{ url_for('products', category='tomato') }}">Tomato Paste &amp; Mix</a></li>
+            <li><a href="{{ url_for('products', category='milk') }}">Milk &amp; Chocolate</a></li>
+            <li><a href="{{ url_for('products', category='beverages') }}">Beverages</a></li>
+            <li><a href="{{ url_for('products', category='tea') }}">Erisco Tea</a></li>
+            <li><a href="{{ url_for('products', category='seasoning') }}">Seasoning &amp; Spice</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Wellness</h4>
+          <ul>
+            <li><a href="{{ url_for('blog') }}">Wellness Blog</a></li>
+            <li><a href="{{ url_for('recipes') }}">Recipes</a></li>
+            <li><a href="{{ url_for('find_us') }}">Find Us Near You</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <ul>
+            <li><a href="tel:+2348033001196">+234 (0) 803 300 1196</a></li>
+            <li><a href="mailto:info@eriscofoodsltd.com.ng">info@eriscofoodsltd.com.ng</a></li>
+            <li><span style="color:rgba(255,255,255,0.4);">2, Oyeleke Street, Oregun, Alausa Ikeja, Lagos 100001, Lagos</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>&copy; 2025 Erisco Foods Limited. All rights reserved.</span>
+        <div class="footer-bottom-certs">
+          <span class="cert-pill">✓ NAFDAC Certified</span>
+          <span class="cert-pill">✓ SON Approved</span>
+          <span class="cert-pill">✓ ISO Standards</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scroll to top -->
+  <button class="scroll-top" aria-label="Scroll to top">
+    <i class="fa fa-chevron-up"></i>
+  </button>
+
+  <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+  {% block scripts %}{% endblock %}
+</body>
+</html>

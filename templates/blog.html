@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+{% block title %}Wellness Blog — Erisco Foods Limited{% endblock %}
+
+{% block content %}
+
+<div class="page-hero">
+  <div class="page-hero-blob page-hero-blob-1"></div>
+  <div class="page-hero-blob page-hero-blob-2"></div>
+  <div class="container">
+    <div class="page-hero-label">Health &amp; Wellness</div>
+    <h1>The Erisco <span>Wellness Blog</span></h1>
+    <p>Health articles, nutrition guides, and wellness tips — grounded in Nigerian food culture and backed by science.</p>
+    <div class="breadcrumb">
+      <a href="{{ url_for('index') }}">Home</a>
+      <span>›</span>
+      <span>Wellness Blog</span>
+    </div>
+  </div>
+</div>
+
+<section class="section">
+  <div class="container">
+
+    <!-- Category Filter -->
+    <div class="product-tabs" style="margin-bottom:48px;">
+      <a href="{{ url_for('blog') }}" class="product-tab {% if not active_category %}active{% endif %}">All Articles</a>
+      {% for cat in categories %}
+      <a href="{{ url_for('blog', category=cat) }}" class="product-tab {% if active_category == cat %}active{% endif %}">{{ cat }}</a>
+      {% endfor %}
+    </div>
+
+    {% if not articles %}
+    <div style="text-align:center;padding:64px 0;color:var(--mid-grey);">
+      <div style="font-size:3rem;margin-bottom:16px;"><i class="fa fa-newspaper"></i></div>
+      <h3>No articles in this category yet.</h3>
+      <a href="{{ url_for('blog') }}" class="btn btn-navy" style="margin-top:20px;">View All Articles</a>
+    </div>
+    {% else %}
+
+    <!-- Featured article (first one) -->
+    {% set featured = articles[0] %}
+    <div class="blog-featured fade-up" style="margin-bottom:56px;">
+      <div class="blog-featured-image">
+        <img src="{% if featured.image and featured.image.startswith('img/') %}{{ url_for('static', filename=featured.image) }}{% else %}{{ featured.image }}{% endif %}" alt="{{ featured.title }}">
+      </div>
+      <div class="blog-featured-content">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;flex-wrap:wrap;">
+          <span class="blog-cat-pill" style="background:{{ featured.category_color }}22;color:{{ featured.category_color }};border:1px solid {{ featured.category_color }}44;">{{ featured.category }}</span>
+          <span style="font-size:0.8rem;color:var(--mid-grey);"><i class="fa fa-clock"></i> {{ featured.read_time }}</span>
+        </div>
+        <h2 style="font-family:var(--font-display);font-size:clamp(1.5rem,3vw,2.2rem);font-weight:900;color:var(--navy);margin-bottom:16px;line-height:1.25;">{{ featured.title }}</h2>
+        <p style="color:var(--mid-grey);line-height:1.7;font-size:1rem;margin-bottom:28px;max-width:600px;">{{ featured.excerpt }}</p>
+        <a href="{{ url_for('blog_article', slug=featured.slug) }}" class="btn btn-navy">
+          Read Article <i class="fa fa-arrow-right"></i>
+        </a>
+      </div>
+    </div>
+
+    <!-- Article Grid -->
+    <div class="blog-grid">
+      {% for article in articles[1:] %}
+      <article class="blog-card fade-up {% if loop.index <= 3 %}fade-up-delay-{{ loop.index }}{% endif %}">
+          <div class="blog-card-img {% if article.image %}blog-card-img-photo{% else %}blog-card-img-plain{% endif %}" style="--hero-from:{{ article.category_color }}55;--hero-to:{{ article.category_color }}33;--hero-plain-bg:{{ article.category_color }}18;{% if article.image %}--hero-image:url('{% if article.image.startswith('img/') %}{{ url_for('static', filename=article.image) }}{% else %}{{ article.image }}{% endif %}');{% endif %}">
+          <span class="blog-card-emoji">{{ article.icon|default('')|safe }}</span>
+          <span class="blog-cat-pill" style="background:{{ article.category_color }}22;color:{{ article.category_color }};border:1px solid {{ article.category_color }}44;">{{ article.category }}</span>
+        </div>
+          <div class="blog-card-body">
+          <div class="blog-card-meta"><i class="fa fa-clock"></i> {{ article.read_time }}</div>
+          <h3>{{ article.title }}</h3>
+          <p>{{ article.excerpt[:140] }}…</p>
+        </div>
+        <div class="blog-card-footer">
+          <a href="{{ url_for('blog_article', slug=article.slug) }}" class="blog-read-more">
+            Read More <i class="fa fa-arrow-right"></i>
+          </a>
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+    {% endif %}
+
+  </div>
+</section>
+
+<!-- Newsletter Strip -->
+<section class="section" style="background:linear-gradient(135deg,var(--navy),var(--navy-dark));">
+  <div class="container" style="text-align:center;">
+    <div style="max-width:520px;margin:0 auto;">
+    <div style="font-size:2.5rem;margin-bottom:16px;"><i class="fa fa-envelope-open-text"></i></div>
+      <h2 style="font-family:var(--font-display);font-size:clamp(1.6rem,3vw,2.2rem);font-weight:900;color:var(--white);margin-bottom:12px;">Get Wellness Tips in Your Inbox</h2>
+      <p style="color:rgba(255,255,255,0.65);margin-bottom:32px;line-height:1.7;">New health articles, seasonal recipes, and exclusive offers — delivered to you every fortnight.</p>
+      <form style="display:flex;gap:12px;max-width:440px;margin:0 auto;flex-wrap:wrap;" action="{{ url_for('contact') }}" method="get">
+        <input type="email" placeholder="Your email address" style="flex:1;min-width:200px;padding:14px 18px;border-radius:50px;border:2px solid rgba(255,255,255,0.15);background:rgba(255,255,255,0.08);color:var(--white);font-size:0.9rem;outline:none;" />
+        <button type="submit" class="btn btn-primary" style="border-radius:50px;white-space:nowrap;">Subscribe Free</button>
+      </form>
+      <p style="font-size:0.75rem;color:rgba(255,255,255,0.35);margin-top:16px;">No spam. Unsubscribe anytime.</p>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

@@ -1,0 +1,118 @@
+{% extends "base.html" %}
+{% block title %}{{ recipe.title }} — Erisco Recipes{% endblock %}
+
+{% block content %}
+
+<!-- Recipe Hero -->
+<div class="page-hero {% if recipe.image %}recipe-hero-photo{% else %}recipe-hero-plain{% endif %}" style="--hero-from:{{ recipe.color_from }}70;--hero-to:{{ recipe.color_to }}70;{% if recipe.image %}--hero-image:url('{% if recipe.image.startswith('img/') %}{{ url_for('static', filename=recipe.image) }}{% else %}{{ recipe.image }}{% endif %}');{% endif %}">
+  <div class="container" style="max-width:900px;">
+    <div style="margin-bottom:16px;">
+      <span style="background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.25);color:var(--white);padding:4px 14px;border-radius:50px;font-size:0.78rem;font-weight:600;letter-spacing:0.06em;">{{ recipe.category }}</span>
+    </div>
+    <h1 style="font-size:clamp(2rem,5vw,3.5rem);margin-bottom:12px;line-height:1.15;">{{ recipe.title }}</h1>
+    <p style="font-size:1.1rem;color:rgba(255,255,255,0.8);margin-bottom:28px;">{{ recipe.subtitle }}</p>
+    <div style="display:flex;gap:20px;flex-wrap:wrap;">
+      <div class="recipe-hero-stat"><i class="fa fa-clock"></i> {{ recipe.time }}</div>
+      <div class="recipe-hero-stat"><i class="fa fa-users"></i> Serves {{ recipe.serves }}</div>
+      <div class="recipe-hero-stat"><i class="fa fa-signal"></i> {{ recipe.difficulty }}</div>
+    </div>
+    <div class="breadcrumb" style="margin-top:24px;">
+      <a href="{{ url_for('index') }}">Home</a>
+      <span>›</span>
+      <a href="{{ url_for('recipes') }}">Recipes</a>
+      <span>›</span>
+      <span>{{ recipe.title }}</span>
+    </div>
+  </div>
+</div>
+
+<section class="section">
+  <div class="container" style="max-width:900px;">
+
+    <div class="recipe-layout">
+
+      <!-- Ingredients Panel -->
+      <div class="recipe-ingredients-panel fade-up">
+        <h3><i class="fa fa-list-ul"></i> Ingredients</h3>
+        <ul class="ingredients-list">
+          {% for ing in recipe.ingredients %}
+          <li>
+            <span class="ingredient-check">✓</span>
+            {{ ing }}
+          </li>
+          {% endfor %}
+        </ul>
+        <div class="recipe-product-link">
+          <div style="font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--green);margin-bottom:8px;">Key Erisco Product</div>
+          <div style="font-weight:600;color:var(--navy);">{{ recipe.product }}</div>
+          <a href="{{ url_for('products', category=recipe.product_category) }}" class="btn btn-navy" style="margin-top:12px;width:100%;text-align:center;padding:10px;">
+            View Product <i class="fa fa-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Steps -->
+      <div class="recipe-steps-panel">
+        <p class="recipe-intro fade-up">{{ recipe.intro }}</p>
+
+        <h3 class="fade-up" style="margin-bottom:24px;color:var(--navy);font-family:var(--font-display);font-size:1.4rem;font-weight:900;">Method</h3>
+        <ol class="recipe-steps">
+          {% for step in recipe.steps %}
+          <li class="recipe-step fade-up">
+            <div class="recipe-step-number">{{ loop.index }}</div>
+            <div class="recipe-step-text">{{ step }}</div>
+          </li>
+          {% endfor %}
+        </ol>
+
+        <!-- Chef's Tip -->
+        <div class="recipe-tip fade-up">
+          <div class="recipe-tip-icon"><i class="fa fa-lightbulb"></i></div>
+          <div>
+            <strong>Chef's Tip</strong>
+            <p>{{ recipe.tip }}</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- More Recipes -->
+{% if related %}
+<section class="section bg-light">
+  <div class="container">
+    <div class="text-center" style="margin-bottom:40px;">
+      <div class="section-label" style="justify-content:center;">More to Cook</div>
+      <h2 class="section-title">You Might Also Like</h2>
+    </div>
+    <div class="recipe-grid" style="grid-template-columns:repeat(auto-fill,minmax(280px,1fr));">
+      {% for r in related %}
+      <article class="recipe-card fade-up">
+        <div class="recipe-card-img {% if r.image %}recipe-card-img-photo{% else %}recipe-card-img-plain{% endif %}" style="--hero-from:{{ r.color_from }}99;--hero-to:{{ r.color_to }}99;{% if r.image %}--hero-image:url('{% if r.image.startswith('img/') %}{{ url_for('static', filename=r.image) }}{% else %}{{ r.image }}{% endif %}');{% endif %}">
+          <span class="recipe-emoji">{{ r.icon|default('')|safe }}</span>
+          <div class="recipe-card-badges">
+            <span class="recipe-badge"><i class="fa fa-clock"></i> {{ r.time }}</span>
+            <span class="recipe-badge"><i class="fa fa-users"></i> {{ r.serves }}</span>
+          </div>
+        </div>
+        <div class="recipe-card-body">
+          <div class="recipe-cat-pill">{{ r.category }}</div>
+          <h3>{{ r.title }}</h3>
+          <p class="recipe-subtitle">{{ r.subtitle }}</p>
+        </div>
+        <div class="recipe-card-footer">
+          <span class="recipe-difficulty difficulty-{{ r.difficulty|lower }}">{{ r.difficulty }}</span>
+          <a href="{{ url_for('recipe_detail', slug=r.slug) }}" class="btn btn-navy" style="padding:8px 18px;font-size:0.85rem;">
+            Get Recipe <i class="fa fa-arrow-right"></i>
+          </a>
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
+
+{% endblock %}

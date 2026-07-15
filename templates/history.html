@@ -1,0 +1,169 @@
+{% extends "base.html" %}
+{% block title %}Our History — Erisco Foods Limited{% endblock %}
+
+{% block content %}
+
+<!-- Page Hero -->
+<div class="page-hero">
+  <div class="page-hero-blob page-hero-blob-1"></div>
+  <div class="page-hero-blob page-hero-blob-2"></div>
+  <div class="container">
+    <div class="page-hero-label">40+ Years of Growth</div>
+    <h1>Our <span>History</span></h1>
+    <p>From a single tomato processing plant to Africa's most recognised indigenous food manufacturer — the Erisco story is Nigeria's story.</p>
+    <div class="breadcrumb">
+      <a href="{{ url_for('index') }}">Home</a>
+      <span>›</span>
+      <a href="{{ url_for('about') }}">About</a>
+      <span>›</span>
+      <span>Our History</span>
+    </div>
+  </div>
+</div>
+
+<!-- Intro -->
+<section class="section">
+  <div class="container">
+    <div class="text-center" style="max-width:700px;margin:0 auto 64px;">
+      <div class="section-label" style="justify-content:center;">The Full Story</div>
+      <h2 class="section-title">A Journey Built on Nigerian Grit</h2>
+      <p style="color:var(--mid-grey);font-size:1.05rem;line-height:1.8;">
+        Erisco Foods didn't happen overnight. It was built year by year, decision by decision — always with the same north star: produce the best food products Nigeria has ever made, and make them affordable enough for every Nigerian family. Here's how we got here.
+      </p>
+    </div>
+
+    <!-- Timeline -->
+    <div class="timeline">
+
+      <div class="timeline-item">
+        <div class="timeline-content fade-up">
+          <div class="timeline-year">1981</div>
+          <h3>The Beginning — One Plant, One Dream</h3>
+          <p>Erisco Foods Limited is incorporated at Sango-Otta, Ogun State. Our founding facility begins production of tomato paste — at the time, a product dominated by expensive imports. The mission from day one: make Nigeria self-sufficient in food, starting with the one ingredient in every pot.</p>
+        </div>
+        <div class="timeline-dot"></div>
+        <div class="timeline-spacer"></div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-spacer"></div>
+        <div class="timeline-dot"></div>
+        <div class="timeline-content fade-up">
+          <div class="timeline-year">Late 1980s</div>
+          <h3>Scaling the Tomato Empire</h3>
+          <p>Erisco expands production capacity and establishes relationships with tomato farmers across the region. The Erisco brand becomes a household name in Lagos and Ogun State. Distribution begins spreading to other states as demand outpaces early capacity.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-content fade-up">
+          <div class="timeline-year">1990s</div>
+          <h3>Going National — The Erisco Name Reaches Every State</h3>
+          <p>A decade of sustained growth takes Erisco tomato paste from a regional brand to a national staple. We invest in logistics and distribution infrastructure, ensuring our products reach markets in every corner of Nigeria. Production capacity grows significantly to meet national demand.</p>
+        </div>
+        <div class="timeline-dot"></div>
+        <div class="timeline-spacer"></div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-spacer"></div>
+        <div class="timeline-dot"></div>
+        <div class="timeline-content fade-up">
+          <div class="timeline-year">Early 2000s</div>
+          <h3>Diversification — Beyond Tomato</h3>
+          <p>Recognising that Nigerian families need more than tomato paste, Erisco diversifies. We launch the Nagiko dairy brand and the Ric-Giko seasoning line, extending our reach into three new product categories. One company, three brands — each purpose-built for its audience.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-content fade-up">
+          <div class="timeline-year">2000s–2010s</div>
+          <h3>The Farmland Investment — 2,500 Hectares</h3>
+          <p>Erisco makes a defining strategic decision: instead of buying raw materials on the open market, we will grow our own. We acquire and develop 2,500 hectares of farmland, creating one of Nigeria's largest integrated food production operations. This investment locks in quality control and insulates us from supply chain volatility.</p>
+        </div>
+        <div class="timeline-dot"></div>
+        <div class="timeline-spacer"></div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-spacer"></div>
+        <div class="timeline-dot"></div>
+        <div class="timeline-content fade-up">
+          <div class="timeline-year">2010s</div>
+          <h3>Certification &amp; International Standards</h3>
+          <p>Erisco achieves NAFDAC certification and SON approval across its full product range — a milestone that validates our commitment to quality and opens doors to export markets. Our QA processes are upgraded to international standards. Production capacity approaches 450,000 metric tonnes annually.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-content fade-up">
+          <div class="timeline-year">2020s</div>
+          <h3>Erisco Tea &amp; The Beverage Expansion</h3>
+          <p>Erisco enters the premium beverage market with the Erisco Tea range — Green Tea Classic, Ginger, Lemon, and Honey variants. We also expand our ginger drink line and our Nagiko beverage portfolio, positioning Erisco as a full-range food and drink company, not just a tomato paste producer.</p>
+        </div>
+        <div class="timeline-dot"></div>
+        <div class="timeline-spacer"></div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-spacer"></div>
+        <div class="timeline-dot"></div>
+        <div class="timeline-content fade-up" style="border-top:3px solid var(--red);">
+          <div class="timeline-year" style="color:var(--navy);">Today</div>
+          <h3>Africa's Largest Tomato Paste Producer</h3>
+          <p>Erisco Foods stands as Africa's leading indigenous food manufacturer. 3,000+ direct employees. 450,000 MT annual capacity. 2,500 hectares of farmland. Three trusted brands. And the same founding promise: quality food, at prices every Nigerian family can afford.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Milestones Strip -->
+<section class="section" style="background:linear-gradient(135deg,var(--navy),var(--navy-dark));padding:64px 0;">
+  <div class="container">
+    <div class="text-center" style="margin-bottom:48px;">
+      <h2 style="font-family:var(--font-display);font-size:clamp(1.8rem,3vw,2.5rem);font-weight:900;color:var(--white);">Key Milestones</h2>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:24px;">
+      {% set milestones = [
+        ("1981","Incorporated in Sango-Otta, Ogun State","<i class='fa fa-industry'></i>"),
+        ("1990s","National distribution across all 36 states","<i class='fa fa-globe'></i>"),
+        ("2000s","Launched Nagiko &amp; Ric-Giko brands","<i class='fa fa-tags'></i>"),
+        ("2010s","NAFDAC &amp; SON certification achieved","<i class='fa fa-check-circle'></i>"),
+        ("2500","Hectares of farmland — fully operational","<i class='fa fa-seedling'></i>"),
+        ("2020s","Erisco Tea range launched","<i class='fa fa-mug-hot'></i>"),
+      ] %}
+      {% for year, event, icon in milestones %}
+      <div class="fade-up" style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:var(--radius);padding:24px;text-align:center;backdrop-filter:blur(10px);">
+        <div style="font-size:2rem;margin-bottom:8px;">{{ icon|safe }}</div>
+        <div style="font-family:var(--font-display);font-size:1.5rem;font-weight:900;color:var(--red);margin-bottom:6px;">{{ year }}</div>
+        <p style="font-size:0.825rem;color:rgba(255,255,255,0.7);line-height:1.5;">{{ event }}</p>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- Legacy Quote -->
+<section class="section bg-light">
+  <div class="container">
+    <div style="max-width:800px;margin:0 auto;text-align:center;">
+      <div style="font-size:4rem;color:var(--red);font-family:Georgia,serif;line-height:0.8;margin-bottom:24px;">"</div>
+      <p style="font-family:var(--font-display);font-size:clamp(1.4rem,2.5vw,2rem);font-weight:700;color:var(--navy);line-height:1.5;margin-bottom:24px;">
+        Our history is not just a company timeline. It is 40 years of proving that what grows in Nigerian soil, processed by Nigerian hands, can nourish Nigeria — and compete with anything in the world.
+      </p>
+      <p style="color:var(--mid-grey);font-size:0.9rem;font-weight:600;">Erisco Foods Limited — Est. 1981</p>
+      <div style="margin-top:32px;">
+        <a href="{{ url_for('about') }}" class="btn btn-navy" style="margin-right:12px;">
+          <i class="fa fa-arrow-left"></i> About Us
+        </a>
+        <a href="{{ url_for('products') }}" class="btn btn-primary">
+          <i class="fa fa-th-large"></i> Our Products
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

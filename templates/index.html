@@ -1,0 +1,519 @@
+{% extends "base.html" %}
+{% block title %}Erisco Foods Limited — Africa's Leading Food Manufacturer{% endblock %}
+
+{% block content %}
+{# featured_articles and featured_recipes passed from view #}
+
+<!-- ══ HERO ══ -->
+<section class="hero">
+  <div class="hero-blob hero-blob-1"></div>
+  <div class="hero-blob hero-blob-2"></div>
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span>Made in Nigeria, Loved Across Africa</span>
+      </div>
+
+      <h1 class="hero-title">
+        Nourishing Nigeria
+        <span class="highlight">For Over 40 Years</span>
+      </h1>
+
+      <p class="hero-desc">
+        From Africa's largest tomato paste factory to your kitchen table — Erisco Foods brings you
+        NAFDAC-certified, SON-approved food products crafted with pride on Nigerian soil.
+      </p>
+
+      <div class="hero-actions">
+        <a href="{{ url_for('products') }}" class="btn btn-primary">
+          <i class="fa fa-th-large"></i> Explore Our Products
+        </a>
+        <a href="{{ url_for('about') }}" class="btn btn-outline">
+          <i class="fa fa-play-circle"></i> Our Story
+        </a>
+      </div>
+
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <div class="hero-stat-number"><span data-counter="40" data-suffix="+">40+</span></div>
+          <div class="hero-stat-label">Years in Business</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-number" style="font-size:1.4rem;"><span data-counter="450" data-suffix="K MT">450K MT</span></div>
+          <div class="hero-stat-label">Annual Capacity</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-number"><span data-counter="3000" data-suffix="+">3,000+</span></div>
+          <div class="hero-stat-label">Employees</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <div class="hero-ring">
+        <div class="hero-ring-outer"></div>
+        <div class="hero-ring-inner"></div>
+        <div class="hero-logo-wrap">
+          <img src="{{ url_for('static', filename='img/erisco-logo.png') }}" alt="Erisco Foods" />
+        </div>
+
+        <div class="hero-float-card card-top-right">
+          <div class="hero-float-card-icon" style="background:#fff5f5;"></div>
+          <div>
+            <div style="font-size:0.7rem;color:#888;font-weight:500;">#1 in Africa</div>
+            <div>Tomato Paste</div>
+          </div>
+        </div>
+
+        <div class="hero-float-card card-bottom-left">
+          <div class="hero-float-card-icon" style="background:#f0fef4;"></div>
+          <div>NAFDAC Certified</div>
+        </div>
+
+        <div class="hero-float-card card-mid-right">
+          <div class="hero-float-card-icon" style="background:#f5f7ff;"></div>
+          <div>
+            <div style="font-size:0.7rem;color:#888;font-weight:500;">Own farmland</div>
+            <div>2,500 Hectares</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ MARQUEE ══ -->
+<div class="marquee-bar">
+    <div class="marquee-inner">
+    <span class="marquee-item">Africa's Largest Tomato Paste Producer</span>
+    <span class="marquee-item">NAFDAC Certified</span>
+    <span class="marquee-item">SON Approved</span>
+    <span class="marquee-item">2,500 Hectares of Nigerian Farmland</span>
+    <span class="marquee-item">3,000+ Employees</span>
+    <span class="marquee-item">450,000 MT Annual Production</span>
+    <span class="marquee-item">Proudly Made in Nigeria</span>
+    <span class="marquee-item">Premium Erisco Tea Range</span>
+    <span class="marquee-item">Ric-Giko Seasoning Cubes</span>
+    <span class="marquee-item">Nagiko Dairy Products</span>
+  </div>
+</div>
+
+<!-- ══ TRUST STRIP ══ -->
+<section class="trust-strip">
+  <div class="container">
+    <div class="trust-badge fade-up">
+      <div class="trust-badge-icon"></div>
+      <span>NAFDAC Certified</span>
+    </div>
+    <div class="trust-badge fade-up fade-up-delay-1">
+      <div class="trust-badge-icon" style="background:var(--green);"></div>
+      <span>SON Approved</span>
+    </div>
+    <div class="trust-badge fade-up fade-up-delay-2">
+      <div class="trust-badge-icon" style="background:var(--red);"></div>
+      <span>100% Nigerian Owned</span>
+    </div>
+    <div class="trust-badge fade-up fade-up-delay-3">
+      <div class="trust-badge-icon" style="background:#e8a020;"></div>
+      <span>40+ Years of Excellence</span>
+    </div>
+    <div class="trust-badge fade-up fade-up-delay-4">
+      <div class="trust-badge-icon" style="background:#6c63ff;"></div>
+      <span>Exported Across Africa</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══ ABOUT SNIPPET ══ -->
+<section class="section">
+  <div class="container">
+    <div class="mission-grid">
+      <div class="mission-image-wrap fade-up">
+        <div class="mission-image-bg">
+          <div class="mission-float">
+            <div class="number">#1</div>
+            <div class="label">In Africa</div>
+          </div>
+          <div class="mission-image-content">
+            <div class="big-stat"><span>40</span>+</div>
+            <p>Years of nourishing Nigeria</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="fade-up fade-up-delay-1">
+        <div class="section-label">Our Story</div>
+        <h2 class="section-title">From Nigerian Soil to Your Table</h2>
+        <p class="section-subtitle" style="margin-bottom:28px;">
+          Founded in 1981 and headquartered in Sango-Otta, Ogun State, Erisco Foods Limited is Nigeria's
+          most trusted indigenous food manufacturer — with a production capacity of 450,000 metric tonnes
+          annually and 2,500 hectares of cultivated Nigerian farmland.
+        </p>
+        <p style="color:var(--mid-grey);font-size:0.95rem;line-height:1.8;margin-bottom:32px;">
+          We're not just a food company. We're a statement that Nigeria can feed itself, export to the
+          world, and be proud of every product that bears our name. From our tomato paste to our seasoning
+          cubes, every product is a promise: quality you can trust, grown and made right here at home.
+        </p>
+
+        <div class="value-list">
+          <div class="value-item">
+            <div class="value-icon value-icon-navy"></div>
+            <div class="value-content">
+              <h4>Farm-to-Table Integrity</h4>
+              <p>We own our 2,500-hectare farm. That means we control quality from seed to shelf — no middlemen, no compromise.</p>
+            </div>
+          </div>
+          <div class="value-item">
+            <div class="value-icon value-icon-red"></div>
+            <div class="value-content">
+              <h4>Certified & Trusted</h4>
+              <p>Every product is NAFDAC-certified and SON-approved. When you see the Erisco name, quality is guaranteed.</p>
+            </div>
+          </div>
+          <div class="value-item">
+            <div class="value-icon value-icon-green"></div>
+            <div class="value-content">
+              <h4>Built for Nigeria</h4>
+              <p>Affordable prices, authentic flavours, and 3,000+ Nigerians employed. We grow when Nigeria grows.</p>
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top:32px;">
+          <a href="{{ url_for('about') }}" class="btn btn-navy">
+            Learn Our Full Story <i class="fa fa-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ STATS ══ -->
+<section class="stats-section">
+  <div class="container">
+    <div class="text-center" style="margin-bottom:48px;">
+      <div class="section-label" style="color:rgba(255,255,255,0.5);justify-content:center;">
+        <span style="background:rgba(255,255,255,0.2);height:2px;"></span>
+        Our Scale
+      </div>
+      <h2 style="font-family:var(--font-display);font-size:clamp(1.8rem,3vw,2.5rem);font-weight:900;color:var(--white);">
+        The Numbers Behind Our Promise
+      </h2>
+    </div>
+    <div class="stats-grid">
+      <div class="stat-item fade-up">
+        <div class="stat-number"><span data-counter="450" data-suffix="K" class="counter-num">450K</span></div>
+        <div style="font-size:0.85rem;color:rgba(255,255,255,0.4);margin-bottom:8px;">Metric Tonnes</div>
+        <div class="stat-label">Annual production capacity</div>
+      </div>
+      <div class="stat-item fade-up fade-up-delay-1">
+        <div class="stat-number"><span data-counter="2500" class="counter-num">2,500</span></div>
+        <div style="font-size:0.85rem;color:rgba(255,255,255,0.4);margin-bottom:8px;">Hectares</div>
+        <div class="stat-label">Of cultivated Nigerian farmland</div>
+      </div>
+      <div class="stat-item fade-up fade-up-delay-2">
+        <div class="stat-number"><span data-counter="3000" data-suffix="+" class="counter-num">3,000+</span></div>
+        <div style="font-size:0.85rem;color:rgba(255,255,255,0.4);margin-bottom:8px;">Employees</div>
+        <div class="stat-label">Nigerians directly employed</div>
+      </div>
+      <div class="stat-item fade-up fade-up-delay-3">
+        <div class="stat-number"><span data-counter="40" data-suffix="+" class="counter-num">40+</span></div>
+        <div style="font-size:0.85rem;color:rgba(255,255,255,0.4);margin-bottom:8px;">Years</div>
+        <div class="stat-label">Nourishing Nigerian families</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ PRODUCTS ══ -->
+<section class="section bg-light">
+  <div class="container">
+    <div class="text-center" style="margin-bottom:48px;">
+      <div class="section-label" style="justify-content:center;">Our Portfolio</div>
+      <h2 class="section-title">Five Product Categories, One Standard</h2>
+      <p class="section-subtitle" style="margin:0 auto;">
+        From the tomato paste that started it all to our premium tea range — every category is built on the same foundation: quality, affordability, and Nigerian pride.
+      </p>
+    </div>
+
+    <div class="category-grid">
+      <div class="category-card fade-up">
+        <div class="category-card-header" style="background:linear-gradient(135deg,#C8102E,#8b0000);">
+          <img class="category-img" src="https://eriscofoodsltd.com.ng/wp-content/uploads/2024/09/tomatoes-erisco-1024x773.jpg" alt="Tomato" />
+          <h3>Tomato Paste &amp; Mix</h3>
+          <p>Africa's finest tomato paste — grown and processed on Nigerian soil for the best flavour.</p>
+        </div>
+        <div class="category-card-body">
+          <ul>
+            <li>Erisco Tomato Paste 70g</li>
+            <li>Erisco Tomato Paste 135g / 210g</li>
+            <li>Erisco Tomato Paste 400g / 800g</li>
+            <li>Catering Pack 2.5kg</li>
+          </ul>
+        </div>
+        <div class="category-card-footer">
+          <a href="{{ url_for('products', category='tomato') }}">View Range <i class="fa fa-arrow-right"></i></a>
+        </div>
+      </div>
+
+      <div class="category-card fade-up fade-up-delay-1">
+        <div class="category-card-header" style="background:linear-gradient(135deg,#273272,#1a2255);">
+          <img class="category-img" src="https://eriscofoodsltd.com.ng/wp-content/uploads/2025/02/milks.jpg" alt="Milk" />
+          <h3>Milk &amp; Chocolate</h3>
+          <p>Rich, nourishing dairy products and cocoa treats crafted to fuel Nigerian families.</p>
+        </div>
+        <div class="category-card-body">
+          <ul>
+            <li>Ricvita Fat-Filled Milk Powder</li>
+            <li>Nagiko Chocolate Cubes</li>
+            <li>Nagiko Milk Cubes</li>
+          </ul>
+        </div>
+        <div class="category-card-footer">
+          <a href="{{ url_for('products', category='milk') }}">View Range <i class="fa fa-arrow-right"></i></a>
+        </div>
+      </div>
+
+      <div class="category-card fade-up fade-up-delay-2">
+        <div class="category-card-header" style="background:linear-gradient(135deg,#04681D,#023d12);">
+          <img class="category-img" src="https://eriscofoodsltd.com.ng/wp-content/uploads/2024/11/beverage_cat-1.jpg" alt="Beverages" />
+          <h3>Beverages</h3>
+          <p>Refreshing, healthy drinks rooted in Nigerian flavours and natural ingredients.</p>
+        </div>
+        <div class="category-card-body">
+          <ul>
+            <li>Ginger &amp; Lemon Honey Drink</li>
+            <li>Ginger &amp; Honey Drink</li>
+            <li>Ricvita Instant Drink</li>
+          </ul>
+        </div>
+        <div class="category-card-footer">
+          <a href="{{ url_for('products', category='beverages') }}">View Range <i class="fa fa-arrow-right"></i></a>
+        </div>
+      </div>
+
+      <div class="category-card fade-up fade-up-delay-3">
+        <div class="category-card-header" style="background:linear-gradient(135deg,#2ecc71,#1a8a47);">
+          <img class="category-img" src="https://eriscofoodsltd.com.ng/wp-content/uploads/2025/01/greentea.jpg" alt="Tea" />
+          <h3>Erisco Tea</h3>
+          <p>Premium Nigerian teas — smooth, aromatic, steeped in natural goodness.</p>
+        </div>
+        <div class="category-card-body">
+          <ul>
+            <li>Erisco Green Tea Classic</li>
+            <li>Green Tea &amp; Ginger</li>
+            <li>Green Tea &amp; Lemon</li>
+            <li>Green Tea &amp; Honey</li>
+          </ul>
+        </div>
+        <div class="category-card-footer">
+          <a href="{{ url_for('products', category='tea') }}">View Range <i class="fa fa-arrow-right"></i></a>
+        </div>
+      </div>
+
+      <div class="category-card fade-up fade-up-delay-4">
+        <div class="category-card-header" style="background:linear-gradient(135deg,#e8a020,#b87a10);">
+          <img class="category-img" src="https://eriscofoodsltd.com.ng/wp-content/uploads/2025/01/2i.jpg" alt="Seasoning" />
+          <h3>Seasoning &amp; Spice</h3>
+          <p>Bold, authentic seasonings that bring the soul of Nigerian cooking to every pot.</p>
+        </div>
+        <div class="category-card-body">
+          <ul>
+            <li>Ric-Giko Chicken Cubes</li>
+            <li>Ric-Giko Beef Cubes</li>
+            <li>Ric-Giko Fish Cubes</li>
+            <li>Mixed Herbs &amp; Spices</li>
+          </ul>
+        </div>
+        <div class="category-card-footer">
+          <a href="{{ url_for('products', category='seasoning') }}">View Range <i class="fa fa-arrow-right"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ BRANDS PREVIEW ══ -->
+<section class="section">
+  <div class="container">
+    <div class="text-center" style="margin-bottom:48px;">
+      <div class="section-label" style="justify-content:center;">Brand Portfolio</div>
+      <h2 class="section-title">Three Brands, One Family</h2>
+      <p class="section-subtitle" style="margin:0 auto;">
+        Each brand is purpose-built for a category — different names, different personalities, one unwavering commitment to Nigerian consumers.
+      </p>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:24px;">
+      <div class="brand-card brand-erisco fade-up">
+        <div class="brand-card-icon"><img src="https://eriscofoodsltd.com.ng/wp-content/uploads/2024/09/EriscoLogo-color.png" alt="Erisco" /></div>
+        <h3>Erisco</h3>
+        <p class="brand-tagline">The Flagship — Tomato &amp; Core Products</p>
+        <p>The name that started it all. Erisco is synonymous with tomato paste in Nigeria — dependable, rich, and affordably priced. It's in millions of Nigerian kitchens, every single day.</p>
+        <div class="brand-tags">
+          <span class="brand-tag">Tomato Paste</span>
+          <span class="brand-tag">Tea Range</span>
+          <span class="brand-tag">Since 1981</span>
+        </div>
+      </div>
+
+      <div class="brand-card brand-nagiko fade-up fade-up-delay-1">
+        <div class="brand-card-icon"><img src="https://eriscofoodsltd.com.ng/wp-content/uploads/2025/02/milks.jpg" alt="Nagiko" /></div>
+        <h3>Nagiko</h3>
+        <p class="brand-tagline">Dairy &amp; Beverages — Nourishment First</p>
+        <p>Nagiko brings you dairy-based nutrition at prices that make sense for Nigerian families. From fat-filled milk powder to chocolate cubes, Nagiko nourishes from morning to night.</p>
+        <div class="brand-tags">
+          <span class="brand-tag">Milk Powder</span>
+          <span class="brand-tag">Chocolate</span>
+          <span class="brand-tag">Beverages</span>
+        </div>
+      </div>
+
+      <div class="brand-card brand-ricgiko fade-up fade-up-delay-2">
+        <div class="brand-card-icon"><img src="https://eriscofoodsltd.com.ng/wp-content/uploads/2025/01/2i.jpg" alt="Ric-Giko" /></div>
+        <h3>Ric-Giko</h3>
+        <p class="brand-tagline">Seasoning &amp; Spice — The Soul of Nigerian Cooking</p>
+        <p>Every great Nigerian dish starts with the right seasoning. Ric-Giko seasoning cubes capture the authentic depth of Nigerian cuisine — rich, bold, and made for Nigerian taste buds.</p>
+        <div class="brand-tags">
+          <span class="brand-tag">Chicken Cubes</span>
+          <span class="brand-tag">Beef Cubes</span>
+          <span class="brand-tag">Herbs &amp; Spices</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="text-center" style="margin-top:40px;">
+      <a href="{{ url_for('brands') }}" class="btn btn-navy">
+        <i class="fa fa-tag"></i> Explore All Brands
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ══ WHY ERISCO ══ -->
+<section class="section" style="background:linear-gradient(135deg,#f8f9fa 0%,#e8ecf5 100%);">
+  <div class="container">
+    <div class="text-center" style="margin-bottom:48px;">
+      <div class="section-label" style="justify-content:center;">Why Choose Us</div>
+      <h2 class="section-title">The Erisco Difference</h2>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:24px;">
+      {% set reasons = [
+        ("<i class='fa fa-seedling'></i>","Farm to Fork Control","We own 2,500 hectares of farmland. We grow it, process it, and deliver it — quality never leaves our hands."),
+        ("<i class='fa fa-award'></i>","Certified Excellence","Every product carries NAFDAC and SON certification. Compliance isn't optional for us — it's who we are."),
+        ("<i class='fa fa-wallet'></i>","Affordable Quality","We believe quality food shouldn't be a luxury. Our pricing ensures every Nigerian family can eat well."),
+        ("<i class='fa fa-flag'></i>","Proudly Nigerian","Every naira you spend on Erisco stays in Nigeria. 3,000+ jobs. 2,500 hectares. All here at home."),
+      ] %}
+      {% for icon, title, desc in reasons %}
+      <div class="card fade-up" style="padding:32px;text-align:center;">
+        <div style="font-size:3rem;margin-bottom:16px;">{{ icon|safe }}</div>
+        <h4 style="font-weight:700;color:var(--navy);margin-bottom:10px;">{{ title }}</h4>
+        <p style="font-size:0.875rem;color:var(--mid-grey);line-height:1.7;">{{ desc }}</p>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- ══ WELLNESS BLOG PREVIEW ══ -->
+<section class="section">
+  <div class="container">
+    <div style="display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:16px;margin-bottom:48px;">
+      <div>
+        <div class="section-label">Health &amp; Wellness</div>
+        <h2 class="section-title" style="margin-bottom:8px;">From the Erisco Wellness Blog</h2>
+        <p class="section-subtitle">Science-backed health articles, written for Nigerian families.</p>
+      </div>
+      <a href="{{ url_for('blog') }}" class="btn btn-navy">All Articles <i class="fa fa-arrow-right"></i></a>
+    </div>
+
+    <div class="blog-grid">
+      {% for article in featured_articles %}
+      <article class="blog-card fade-up {% if loop.index > 1 %}fade-up-delay-{{ loop.index - 1 }}{% endif %}">
+        <div class="blog-card-img {% if article.image %}blog-card-img-photo{% else %}blog-card-img-plain{% endif %}" style="--hero-from:{{ article.category_color }}55;--hero-to:{{ article.category_color }}33;--hero-plain-bg:{{ article.category_color }}18;{% if article.image %}--hero-image:url('{% if article.image.startswith('img/') %}{{ url_for('static', filename=article.image) }}{% else %}{{ article.image }}{% endif %}');{% endif %}">
+          <span class="blog-card-emoji">{{ article.icon|default('')|safe }}</span>
+          <span class="blog-cat-pill" style="background:{{ article.category_color }}22;color:{{ article.category_color }};border:1px solid {{ article.category_color }}44;">{{ article.category }}</span>
+        </div>
+        <div class="blog-card-body">
+          <div class="blog-card-meta"><i class="fa fa-clock"></i> {{ article.read_time }}</div>
+          <h3>{{ article.title }}</h3>
+          <p>{{ article.excerpt[:130] }}…</p>
+        </div>
+        <div class="blog-card-footer">
+          <a href="{{ url_for('blog_article', slug=article.slug) }}" class="blog-read-more">
+            Read More <i class="fa fa-arrow-right"></i>
+          </a>
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- ══ RECIPES PREVIEW ══ -->
+<section class="section bg-light">
+  <div class="container">
+    <div style="display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:16px;margin-bottom:48px;">
+      <div>
+        <div class="section-label">Cook With Erisco</div>
+        <h2 class="section-title" style="margin-bottom:8px;">Nigerian Recipes You'll Love</h2>
+        <p class="section-subtitle">From classic tomato stew to party jollof — real recipes, real ingredients.</p>
+      </div>
+      <a href="{{ url_for('recipes') }}" class="btn btn-navy">All Recipes <i class="fa fa-arrow-right"></i></a>
+    </div>
+    <div class="recipe-grid">
+      {% for recipe in featured_recipes %}
+      <article class="recipe-card fade-up {% if loop.index > 1 %}fade-up-delay-{{ loop.index - 1 }}{% endif %}">
+        <div class="recipe-card-img {% if recipe.image %}recipe-card-img-photo{% else %}recipe-card-img-plain{% endif %}" style="--hero-from:{{ recipe.color_from }}99;--hero-to:{{ recipe.color_to }}99;{% if recipe.image %}--hero-image:url('{% if recipe.image.startswith('img/') %}{{ url_for('static', filename=recipe.image) }}{% else %}{{ recipe.image }}{% endif %}');{% endif %}">
+          <span class="recipe-emoji">{{ recipe.icon|default('')|safe }}</span>
+          <div class="recipe-card-badges">
+            <span class="recipe-badge"><i class="fa fa-clock"></i> {{ recipe.time }}</span>
+            <span class="recipe-badge"><i class="fa fa-users"></i> {{ recipe.serves }}</span>
+          </div>
+        </div>
+        <div class="recipe-card-body">
+          <div class="recipe-cat-pill">{{ recipe.category }}</div>
+          <h3>{{ recipe.title }}</h3>
+          <p class="recipe-subtitle">{{ recipe.subtitle }}</p>
+        </div>
+        <div class="recipe-card-footer">
+          <span class="recipe-difficulty difficulty-{{ recipe.difficulty|lower }}">{{ recipe.difficulty }}</span>
+          <a href="{{ url_for('recipe_detail', slug=recipe.slug) }}" class="btn btn-navy" style="padding:8px 18px;font-size:0.85rem;">
+            Get Recipe <i class="fa fa-arrow-right"></i>
+          </a>
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- ══ FIND US STRIP ══ -->
+<section class="section" style="background:linear-gradient(135deg,var(--navy),var(--navy-dark));">
+  <div class="container">
+    <div style="display:grid;grid-template-columns:1fr auto;align-items:center;gap:40px;flex-wrap:wrap;">
+      <div class="fade-up">
+        <div class="section-label" style="color:rgba(255,255,255,0.4);justify-content:flex-start;">
+          <span style="background:rgba(255,255,255,0.2);height:2px;"></span>
+          Retail Locator
+        </div>
+        <h2 style="font-family:var(--font-display);font-size:clamp(1.6rem,3vw,2.4rem);font-weight:900;color:var(--white);margin-bottom:12px;">Find Erisco Near You</h2>
+        <p style="color:rgba(255,255,255,0.65);max-width:520px;line-height:1.7;margin-bottom:0;">Available in over 50,000 stores across all 36 states — from Maiduguri to Lagos, Kano to Calabar. Erisco is in your neighbourhood.</p>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:24px;">
+          {% for icon, label in [ ("<i class='fa fa-store'></i>","Supermarkets"),("<i class='fa fa-shopping-cart'></i>","Markets"),("<i class='fa fa-home'></i>","Provision Stores"),("<i class='fa fa-box-open'></i>","Wholesalers") ] %}
+          <span style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12);color:rgba(255,255,255,0.8);padding:6px 14px;border-radius:50px;font-size:0.8rem;font-weight:500;">{{ icon|safe }} {{ label }}</span>
+          {% endfor %}
+        </div>
+      </div>
+      <div class="fade-up fade-up-delay-1" style="text-align:center;flex-shrink:0;">
+      <div style="font-size:4rem;margin-bottom:12px;"><i class="fa fa-map-marker-alt"></i></div>
+        <a href="{{ url_for('find_us') }}" class="btn btn-primary" style="white-space:nowrap;">
+          <i class="fa fa-map-marker-alt"></i> Find a Store
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

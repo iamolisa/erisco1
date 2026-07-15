@@ -1,0 +1,100 @@
+{% extends "base.html" %}
+{% block title %}{{ article.title }} — Erisco Wellness Blog{% endblock %}
+
+{% block content %}
+
+<!-- Article Hero -->
+<div class="page-hero blog-hero-photo" style="--hero-image:url('{% if article.image and article.image.startswith('img/') %}{{ url_for('static', filename=article.image) }}{% else %}{{ article.image }}{% endif %}');">
+  <div class="page-hero-blob page-hero-blob-1"></div>
+  <div class="page-hero-blob page-hero-blob-2"></div>
+  <div class="container" style="max-width:820px;">
+    <div style="display:flex;align-items:center;gap:12px;margin-bottom:20px;flex-wrap:wrap;">
+      <span class="blog-cat-pill" style="background:{{ article.category_color }}22;color:{{ article.category_color }};border:1px solid {{ article.category_color }}44;">{{ article.category }}</span>
+      <span style="color:rgba(255,255,255,0.5);font-size:0.85rem;"><i class="fa fa-clock"></i> {{ article.read_time }}</span>
+    </div>
+    <h1 style="font-size:clamp(1.8rem,4vw,3rem);margin-bottom:20px;line-height:1.2;">{{ article.title }}</h1>
+    <p style="font-size:1.1rem;color:rgba(255,255,255,0.7);line-height:1.7;max-width:620px;">{{ article.excerpt }}</p>
+    <div class="breadcrumb" style="margin-top:24px;">
+      <a href="{{ url_for('index') }}">Home</a>
+      <span>›</span>
+      <a href="{{ url_for('blog') }}">Wellness Blog</a>
+      <span>›</span>
+      <span>{{ article.title[:40] }}…</span>
+    </div>
+  </div>
+</div>
+
+<section class="section">
+  <div class="container" style="max-width:820px;">
+    <div class="article-body">
+
+      <!-- Intro -->
+        <div class="article-intro fade-up">
+        <div class="article-emoji">{{ article.icon|default('')|safe }}</div>
+        <p>{{ article.excerpt }}</p>
+      </div>
+
+      <!-- Content Points -->
+      {% for heading, body in article.content_points %}
+      <div class="article-point fade-up">
+        <h2>{{ loop.index }}. {{ heading }}</h2>
+        <p>{{ body }}</p>
+      </div>
+      {% endfor %}
+
+      <!-- Product CTA if linked -->
+      {% if article.product_link and tea_product %}
+      <div class="article-product-cta fade-up">
+        <div class="article-product-cta-icon">{{ tea_product.icon|default('')|safe }}</div>
+        <div class="article-product-cta-body">
+          <div style="font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--green);margin-bottom:6px;">Featured Product</div>
+          <h3>{{ tea_product.name }}</h3>
+          <p>{{ tea_product.tagline }}</p>
+          <a href="{{ url_for('tea_detail', slug=article.product_link) }}" class="btn btn-navy" style="margin-top:12px;">
+            Explore This Tea <i class="fa fa-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+      {% elif article.product_link == None and article.content_points|length > 0 %}
+      <div class="article-takeaway fade-up">
+        <h3>Key Takeaway</h3>
+        <p>The foods you eat every day are more powerful than most people realise. Nigerian cuisine — built on tomatoes, ginger, herbs, and natural ingredients — is already one of the healthiest food traditions in the world. Erisco Foods is committed to making those ingredients accessible, trusted, and joyful to cook with.</p>
+        <a href="{{ url_for('products') }}" class="btn btn-navy" style="margin-top:16px;">Explore Our Products</a>
+      </div>
+      {% endif %}
+
+    </div>
+  </div>
+</section>
+
+<!-- Related Articles -->
+{% if related %}
+<section class="section bg-light">
+  <div class="container">
+    <div class="text-center" style="margin-bottom:40px;">
+      <div class="section-label" style="justify-content:center;">Keep Reading</div>
+      <h2 class="section-title">More Wellness Articles</h2>
+    </div>
+    <div class="blog-grid" style="grid-template-columns:repeat(auto-fill,minmax(280px,1fr));">
+      {% for r in related %}
+      <article class="blog-card fade-up">
+        <div class="blog-card-img" style="background:{{ r.category_color }}18;">
+          <span class="blog-card-emoji">{{ r.icon|default('')|safe }}</span>
+          <span class="blog-cat-pill" style="background:{{ r.category_color }}22;color:{{ r.category_color }};border:1px solid {{ r.category_color }}44;">{{ r.category }}</span>
+        </div>
+        <div class="blog-card-body">
+          <div class="blog-card-meta"><i class="fa fa-clock"></i> {{ r.read_time }}</div>
+          <h3>{{ r.title }}</h3>
+          <p>{{ r.excerpt[:120] }}…</p>
+        </div>
+        <div class="blog-card-footer">
+          <a href="{{ url_for('blog_article', slug=r.slug) }}" class="blog-read-more">Read More <i class="fa fa-arrow-right"></i></a>
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
+
+{% endblock %}

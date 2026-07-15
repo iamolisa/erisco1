@@ -1,0 +1,157 @@
+{% extends "base.html" %}
+{% block title %}{{ tea.name }} — Erisco Tea{% endblock %}
+
+{% block content %}
+
+<!-- Hero -->
+<div class="page-hero" style="background:linear-gradient(135deg,{{ tea.color_from }},{{ tea.color_to }});min-height:480px;display:flex;align-items:center;">
+  <div class="container" style="max-width:900px;">
+    <div class="breadcrumb" style="margin-bottom:20px;">
+      <a href="{{ url_for('index') }}">Home</a>
+      <span>›</span>
+      <a href="{{ url_for('products') }}">Products</a>
+      <span>›</span>
+      <a href="{{ url_for('products', category='tea') }}">Erisco Tea</a>
+      <span>›</span>
+      <span>{{ tea.name }}</span>
+    </div>
+    <div style="display:flex;align-items:center;gap:24px;flex-wrap:wrap;">
+      <div class="product-detail-icon">
+        {% if tea.image %}
+          <img src="{{ tea.image }}" alt="{{ tea.name }}" />
+        {% endif %}
+      </div>
+      <div>
+        <div style="font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:rgba(255,255,255,0.6);margin-bottom:8px;">Erisco Tea Range</div>
+        <h1 style="font-size:clamp(2rem,5vw,3.2rem);margin-bottom:10px;line-height:1.15;">{{ tea.name }}</h1>
+        <p style="font-size:1.1rem;color:rgba(255,255,255,0.85);font-style:italic;margin-bottom:20px;">{{ tea.tagline }}</p>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;">
+          <span style="background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.25);color:var(--white);padding:6px 16px;border-radius:50px;font-size:0.8rem;font-weight:600;">NAFDAC Certified</span>
+          <span style="background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.25);color:var(--white);padding:6px 16px;border-radius:50px;font-size:0.8rem;font-weight:600;">Made in Nigeria</span>
+          <span style="background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.25);color:var(--white);padding:6px 16px;border-radius:50px;font-size:0.8rem;font-weight:600;">Natural Ingredients</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Product Story -->
+<section class="section">
+  <div class="container" style="max-width:900px;">
+    <div class="product-story-grid">
+      <div class="fade-up">
+        <div class="section-label">The Story</div>
+        <h2 class="section-title">Why This Tea Exists</h2>
+        <p style="font-size:1.05rem;color:var(--mid-grey);line-height:1.8;margin-bottom:28px;">{{ tea.story }}</p>
+        <a href="{{ url_for('contact') }}" class="btn btn-navy">
+          <i class="fa fa-shopping-bag"></i> Find Where to Buy
+        </a>
+      </div>
+      <div class="product-story-visual fade-up fade-up-delay-1">
+          <div class="product-story-card">
+          {% if tea.image %}
+            <div style="margin-bottom:16px;"><img src="{{ tea.image }}" alt="{{ tea.name }}" style="max-width:120px;" /></div>
+          {% endif %}
+          <h3 style="font-family:var(--font-display);color:var(--navy);font-size:1.2rem;font-weight:900;margin-bottom:8px;">{{ tea.name }}</h3>
+          <p style="color:var(--mid-grey);font-size:0.85rem;font-style:italic;">{{ tea.tagline }}</p>
+          <hr style="border:none;border-top:1px solid rgba(39,50,114,0.1);margin:20px 0;" />
+          <h4 style="font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--navy);margin-bottom:12px;">Ingredients</h4>
+          <ul style="list-style:none;padding:0;">
+            {% for ing in tea.ingredients %}
+            <li style="font-size:0.85rem;color:var(--mid-grey);padding:4px 0;border-bottom:1px solid rgba(0,0,0,0.04);">✓ {{ ing }}</li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Benefits -->
+<section class="section" style="background:linear-gradient(135deg,#f8f9fa,#e8ecf5);">
+  <div class="container" style="max-width:1000px;">
+    <div class="text-center" style="margin-bottom:48px;">
+      <div class="section-label" style="justify-content:center;">Why Drink It</div>
+      <h2 class="section-title">6 Reasons to Make This Your Daily Cup</h2>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:24px;">
+      {% for benefit in tea.benefits %}
+      <div class="benefit-card fade-up {% if loop.index <= 3 %}fade-up-delay-{{ loop.index - 1 }}{% endif %}">
+        <div class="benefit-icon"></div>
+        <h4>{{ benefit.title }}</h4>
+        <p>{{ benefit.desc }}</p>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- Brewing Guide -->
+<section class="section">
+  <div class="container" style="max-width:800px;">
+    <div class="text-center" style="margin-bottom:48px;">
+      <div class="section-label" style="justify-content:center;">How to Brew</div>
+      <h2 class="section-title">The Perfect Cup, Every Time</h2>
+      <p class="section-subtitle" style="margin:0 auto;">Follow these steps for the best flavour from your {{ tea.name }}.</p>
+    </div>
+    <div class="brew-steps">
+      {% for step in tea.brew_steps %}
+      <div class="brew-step fade-up">
+        <div class="brew-step-number" style="background:linear-gradient(135deg,{{ tea.color_from }},{{ tea.color_to }});">{{ step.step }}</div>
+        <div class="brew-step-content">
+          <h3>{{ step.title }}</h3>
+          <p>{{ step.desc }}</p>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="section" style="background:linear-gradient(135deg,{{ tea.color_from }},{{ tea.color_to }});text-align:center;">
+  <div class="container">
+    <div style="font-size:3rem;margin-bottom:20px;">{{ tea.icon|default('')|safe }}</div>
+    <h2 style="font-family:var(--font-display);font-size:clamp(1.8rem,3vw,2.5rem);font-weight:900;color:var(--white);margin-bottom:12px;">Ready to Try {{ tea.name }}?</h2>
+    <p style="color:rgba(255,255,255,0.8);font-size:1rem;max-width:440px;margin:0 auto 32px;line-height:1.7;">Available in supermarkets, markets, and provision stores across Nigeria.</p>
+    <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
+      <a href="{{ url_for('find_us') }}" class="btn btn-outline" style="border-color:rgba(255,255,255,0.5);">
+        <i class="fa fa-map-marker-alt"></i> Find a Store
+      </a>
+      <a href="{{ url_for('products', category='tea') }}" class="btn" style="background:var(--white);color:var(--navy);font-weight:700;">
+        <i class="fa fa-th-large"></i> See All Teas
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Related Articles -->
+{% if related_articles %}
+<section class="section bg-light">
+  <div class="container">
+    <div class="text-center" style="margin-bottom:40px;">
+      <div class="section-label" style="justify-content:center;">Learn More</div>
+      <h2 class="section-title">Wellness Articles for Tea Lovers</h2>
+    </div>
+    <div class="blog-grid" style="grid-template-columns:repeat(auto-fill,minmax(280px,1fr));">
+      {% for art in related_articles %}
+      <article class="blog-card fade-up">
+        <div class="blog-card-img" style="background:{{ art.category_color }}18;">
+          <span class="blog-card-emoji">{{ art.icon|default('')|safe }}</span>
+        </div>
+        <div class="blog-card-body">
+          <div class="blog-card-meta"><i class="fa fa-clock"></i> {{ art.read_time }}</div>
+          <h3>{{ art.title }}</h3>
+          <p>{{ art.excerpt[:120] }}…</p>
+        </div>
+        <div class="blog-card-footer">
+          <a href="{{ url_for('blog_article', slug=art.slug) }}" class="blog-read-more">Read Article <i class="fa fa-arrow-right"></i></a>
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
+
+{% endblock %}

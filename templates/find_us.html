@@ -1,0 +1,168 @@
+{% extends "base.html" %}
+{% block title %}Find Erisco Near You — Store Locator{% endblock %}
+
+{% block content %}
+
+<div class="page-hero">
+  <div class="page-hero-blob page-hero-blob-1"></div>
+  <div class="page-hero-blob page-hero-blob-2"></div>
+  <div class="container">
+    <div class="page-hero-label">Retail Locator</div>
+    <h1>Find Erisco <span>Near You</span></h1>
+    <p>Erisco products are available in over 50,000 stores across all 36 states and the FCT. Find us in your neighbourhood today.</p>
+    <div class="breadcrumb">
+      <a href="{{ url_for('index') }}">Home</a>
+      <span>›</span>
+      <span>Find Us</span>
+    </div>
+  </div>
+</div>
+
+<!-- Quick channels -->
+<section class="trust-strip">
+  <div class="container">
+    <div class="trust-badge fade-up">
+      <div class="trust-badge-icon"><i class="fa fa-store"></i></div>
+      <span>Supermarkets</span>
+    </div>
+    <div class="trust-badge fade-up fade-up-delay-1">
+      <div class="trust-badge-icon" style="background:var(--red);"><i class="fa fa-shopping-cart"></i></div>
+      <span>Open Markets</span>
+    </div>
+    <div class="trust-badge fade-up fade-up-delay-2">
+      <div class="trust-badge-icon" style="background:var(--green);"><i class="fa fa-home"></i></div>
+      <span>Provision Stores</span>
+    </div>
+    <div class="trust-badge fade-up fade-up-delay-3">
+      <div class="trust-badge-icon" style="background:#e8a020;"><i class="fa fa-box-open"></i></div>
+      <span>Wholesalers</span>
+    </div>
+    <div class="trust-badge fade-up fade-up-delay-4">
+      <div class="trust-badge-icon" style="background:#6c63ff;"><i class="fa fa-shopping-bag"></i></div>
+      <span>Online Retailers</span>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+
+    <div class="text-center" style="margin-bottom:56px;">
+      <div class="section-label" style="justify-content:center;">Coverage Map</div>
+      <h2 class="section-title">Available in All 36 States + FCT</h2>
+      <p class="section-subtitle" style="margin:0 auto;">With over 50,000 retail touchpoints across Nigeria, there's an Erisco product within reach wherever you are.</p>
+    </div>
+
+    <!-- State Grid -->
+    <div class="states-grid">
+      {% for state in states %}
+      <div class="state-card fade-up">
+          <div class="state-card-header">
+          <div class="state-icon"><i class="fa fa-map-marker-alt"></i></div>
+          <div>
+            <h4>{{ state.name }}</h4>
+            <div class="state-stores">{{ state.stores }} retail points</div>
+          </div>
+        </div>
+        <div class="state-anchor">{{ state.anchor }}</div>
+      </div>
+      {% endfor %}
+    </div>
+
+  </div>
+</section>
+
+<!-- Map Section -->
+<section class="section bg-light">
+  <div class="container">
+    <div class="find-us-grid">
+      <div class="fade-up">
+        <div class="section-label">Head Office &amp; Factory</div>
+        <h2 class="section-title">Visit Our Sango-Otta Home</h2>
+        <p style="color:var(--mid-grey);line-height:1.8;margin-bottom:24px;">
+          Erisco Foods Limited has called Sango-Otta, Ogun State home since 1981. Our factory, offices, and laboratory are all based at this site — strategically located on the Lagos-Abeokuta Expressway with excellent logistics access.
+        </p>
+        <div class="contact-info-list">
+          <div class="contact-info-item">
+            <div class="contact-info-icon" style="background:rgba(39,50,114,0.08);"><i class="fa fa-map-marker-alt" style="color:var(--navy);"></i></div>
+            <div>
+              <div style="font-weight:600;color:var(--navy);margin-bottom:2px;">Physical Address</div>
+              <div style="color:var(--mid-grey);font-size:0.9rem;">KM 45, Lagos-Abeokuta Expressway<br>Sango-Otta, Ogun State, Nigeria</div>
+            </div>
+          </div>
+          <div class="contact-info-item">
+            <div class="contact-info-icon" style="background:rgba(200,16,46,0.08);"><i class="fa fa-phone" style="color:var(--red);"></i></div>
+            <div>
+              <div style="font-weight:600;color:var(--navy);margin-bottom:2px;">Phone</div>
+              <div style="color:var(--mid-grey);font-size:0.9rem;"><a href="tel:+2348033001196" style="color:var(--red);">+234 (0) 803 300 1196</a></div>
+            </div>
+          </div>
+          <div class="contact-info-item">
+            <div class="contact-info-icon" style="background:rgba(4,104,29,0.08);"><i class="fa fa-envelope" style="color:var(--green);"></i></div>
+            <div>
+              <div style="font-weight:600;color:var(--navy);margin-bottom:2px;">Email</div>
+              <div style="color:var(--mid-grey);font-size:0.9rem;"><a href="mailto:info@eriscofoodsltd.com.ng" style="color:var(--green);">info@eriscofoodsltd.com.ng</a></div>
+            </div>
+          </div>
+          <div class="contact-info-item">
+            <div class="contact-info-icon" style="background:rgba(232,160,32,0.08);"><i class="fa fa-clock" style="color:#e8a020;"></i></div>
+            <div>
+              <div style="font-weight:600;color:var(--navy);margin-bottom:2px;">Office Hours</div>
+              <div style="color:var(--mid-grey);font-size:0.9rem;">Monday – Friday: 8:00am – 5:00pm<br>Saturday: 9:00am – 1:00pm</div>
+            </div>
+          </div>
+        </div>
+        <div style="margin-top:28px;">
+          <a href="https://maps.google.com/?q=KM+45+Lagos-Abeokuta+Expressway+Sango-Otta+Ogun+State" target="_blank" class="btn btn-navy">
+            <i class="fa fa-map-marker-alt"></i> Open in Google Maps
+          </a>
+        </div>
+      </div>
+
+      <!-- Map Embed Placeholder -->
+      <div class="map-embed-wrap fade-up fade-up-delay-1">
+          <div class="map-placeholder">
+          <div style="font-size:3rem;margin-bottom:16px;"><i class="fa fa-map"></i></div>
+          <h3 style="color:var(--white);font-family:var(--font-display);font-size:1.3rem;font-weight:900;margin-bottom:8px;">Sango-Otta, Ogun State</h3>
+          <p style="color:rgba(255,255,255,0.6);font-size:0.9rem;margin-bottom:24px;">KM 45, Lagos-Abeokuta Expressway</p>
+          <a href="https://maps.google.com/?q=Sango-Otta+Ogun+State+Nigeria" target="_blank" class="btn btn-outline" style="border-color:rgba(255,255,255,0.4);">
+            <i class="fa fa-external-link-alt"></i> Open Map
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Retail Channels -->
+<section class="section">
+  <div class="container">
+    <div class="text-center" style="margin-bottom:48px;">
+      <div class="section-label" style="justify-content:center;">Where to Buy</div>
+      <h2 class="section-title">Find Us In Every Channel</h2>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:24px;">
+      {% for channel, icon, desc, color in [
+        ("Major Supermarkets","<i class='fa fa-store'></i>","Shoprite, Spar, Ebeano, Justrite, Game, and other major chains across Nigeria.","#273272"),
+        ("Open Markets","<i class='fa fa-shopping-cart'></i>","Available in all major markets — Mile 12, Oyingbo, Onitsha Main Market, Wuse Market, and more.","#C8102E"),
+        ("Neighbourhood Stores","<i class='fa fa-home'></i>","Your local provision store, chemist, or corner shop almost certainly stocks our products.","#04681D"),
+        ("Online Platforms","<i class='fa fa-shopping-bag'></i>","Order on Jumia, Konga, and other major e-commerce platforms with nationwide delivery.","#6c63ff"),
+        ("Wholesale & Bulk","<i class='fa fa-box-open'></i>","Contact our sales team for distributor pricing, bulk orders, and institutional supply.","#e8a020"),
+        ("Become a Distributor","<i class='fa fa-handshake'></i>","Interested in distributing Erisco products in your area? We're actively expanding our network.","#2ecc71"),
+      ] %}
+      <div class="card fade-up" style="padding:28px;text-align:center;">
+        <div style="width:56px;height:56px;border-radius:14px;background:{{ color }}15;border:1px solid {{ color }}25;display:flex;align-items:center;justify-content:center;font-size:1.8rem;margin:0 auto 16px;">{{ icon|safe }}</div>
+        <h4 style="font-weight:700;color:var(--navy);margin-bottom:8px;font-size:0.95rem;">{{ channel }}</h4>
+        <p style="font-size:0.825rem;color:var(--mid-grey);line-height:1.6;">{{ desc }}</p>
+      </div>
+      {% endfor %}
+    </div>
+    <div class="text-center" style="margin-top:40px;">
+      <a href="{{ url_for('contact') }}" class="btn btn-navy">
+        <i class="fa fa-handshake"></i> Enquire About Distribution
+      </a>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

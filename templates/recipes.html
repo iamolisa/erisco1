@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+{% block title %}Nigerian Recipes — Erisco Foods Limited{% endblock %}
+
+{% block content %}
+
+<div class="page-hero">
+  <div class="page-hero-blob page-hero-blob-1"></div>
+  <div class="page-hero-blob page-hero-blob-2"></div>
+  <div class="container">
+    <div class="page-hero-label">Cook With Erisco</div>
+    <h1>Nigerian <span>Recipes</span></h1>
+    <p>Tried, tested, and deeply delicious — Nigerian recipes made with the ingredients you already trust.</p>
+    <div class="breadcrumb">
+      <a href="{{ url_for('index') }}">Home</a>
+      <span>›</span>
+      <span>Recipes</span>
+    </div>
+  </div>
+</div>
+
+<section class="section">
+  <div class="container">
+
+    <!-- Category Tabs -->
+    <div class="product-tabs" style="margin-bottom:48px;">
+      <a href="{{ url_for('recipes') }}" class="product-tab {% if not active_category %}active{% endif %}">All Recipes</a>
+      {% for cat in cat_options %}
+      <a href="{{ url_for('recipes', category=cat) }}" class="product-tab {% if active_category == cat %}active{% endif %}">{{ cat }}</a>
+      {% endfor %}
+    </div>
+
+    <!-- Recipe Grid -->
+    <div class="recipe-grid">
+      {% for recipe in recipes %}
+      <article class="recipe-card fade-up {% if loop.index <= 4 %}fade-up-delay-{{ loop.index - 1 }}{% endif %}">
+        <div class="recipe-card-img {% if recipe.image %}recipe-card-img-photo{% else %}recipe-card-img-plain{% endif %}" style="--hero-from:{{ recipe.color_from }}99;--hero-to:{{ recipe.color_to }}99;{% if recipe.image %}--hero-image:url('{% if recipe.image.startswith('img/') %}{{ url_for('static', filename=recipe.image) }}{% else %}{{ recipe.image }}{% endif %}');{% endif %}">
+          <span class="recipe-emoji">{{ recipe.icon|default('')|safe }}</span>
+          <div class="recipe-card-badges">
+            <span class="recipe-badge"><i class="fa fa-clock"></i> {{ recipe.time }}</span>
+            <span class="recipe-badge"><i class="fa fa-users"></i> Serves {{ recipe.serves }}</span>
+          </div>
+        </div>
+        <div class="recipe-card-body">
+          <div class="recipe-cat-pill">{{ recipe.category }}</div>
+          <h3>{{ recipe.title }}</h3>
+          <p class="recipe-subtitle">{{ recipe.subtitle }}</p>
+          <p style="font-size:0.85rem;color:var(--mid-grey);line-height:1.6;margin-top:8px;">{{ recipe.intro[:120] }}…</p>
+        </div>
+        <div class="recipe-card-footer">
+          <div style="display:flex;align-items:center;gap:8px;">
+            <span class="recipe-difficulty difficulty-{{ recipe.difficulty|lower }}">{{ recipe.difficulty }}</span>
+            <span style="font-size:0.75rem;color:var(--mid-grey);">Made with {{ recipe.product }}</span>
+          </div>
+          <a href="{{ url_for('recipe_detail', slug=recipe.slug) }}" class="btn btn-navy" style="padding:8px 18px;font-size:0.85rem;">
+            Get Recipe <i class="fa fa-arrow-right"></i>
+          </a>
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+
+    <!-- Submit a Recipe -->
+    <div style="margin-top:72px;background:linear-gradient(135deg,var(--navy),var(--navy-dark));border-radius:var(--radius-lg);padding:48px;text-align:center;">
+      <div style="font-size:2.5rem;margin-bottom:16px;"><i class="fa fa-envelope-open-text"></i></div>
+      <h2 style="font-family:var(--font-display);font-size:clamp(1.5rem,2.5vw,2rem);font-weight:900;color:var(--white);margin-bottom:12px;">Share Your Erisco Recipe</h2>
+      <p style="color:rgba(255,255,255,0.65);max-width:440px;margin:0 auto 28px;line-height:1.7;">Have a recipe your family loves using Erisco products? We'd love to feature it on this page.</p>
+      <a href="{{ url_for('contact') }}" class="btn btn-primary">Submit Your Recipe <i class="fa fa-paper-plane"></i></a>
+    </div>
+
+  </div>
+</section>
+
+{% endblock %}

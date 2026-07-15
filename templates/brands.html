@@ -1,0 +1,205 @@
+{% extends "base.html" %}
+{% block title %}Our Brands — Erisco Foods Limited{% endblock %}
+
+{% block content %}
+
+<!-- Page Hero -->
+<div class="page-hero">
+  <div class="page-hero-blob page-hero-blob-1"></div>
+  <div class="page-hero-blob page-hero-blob-2"></div>
+  <div class="container">
+    <div class="page-hero-label">Brand Portfolio</div>
+    <h1>Three <span>Brands</span>, One Mission</h1>
+    <p>Each brand has a distinct personality, a specific audience, and a clear promise. Together they cover everything a Nigerian family needs from their pantry.</p>
+    <div class="breadcrumb">
+      <a href="{{ url_for('index') }}">Home</a>
+      <span>›</span>
+      <span>Our Brands</span>
+    </div>
+  </div>
+</div>
+
+<!-- Brand 1: Erisco -->
+<section class="section">
+  <div class="container">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;" class="mission-grid">
+      <div class="fade-up">
+        <div class="section-label">The Flagship</div>
+        <h2 class="section-title" style="font-size:clamp(2.5rem,5vw,4rem);">Erisco</h2>
+        <p style="font-size:1.1rem;font-weight:600;color:var(--red);margin-bottom:20px;">Nigeria's #1 Tomato Paste Brand</p>
+        <p style="color:var(--mid-grey);font-size:1rem;line-height:1.8;margin-bottom:20px;">
+          Erisco is the name that put Nigeria on the map as a food producer. Since 1981, the Erisco brand has been synonymous with rich, thick, affordable tomato paste — the kind that's been a cornerstone of Nigerian cooking for generations.
+        </p>
+        <p style="color:var(--mid-grey);font-size:1rem;line-height:1.8;margin-bottom:32px;">
+          Today the Erisco brand extends beyond tomato paste into premium teas and beverages — same commitment to quality, same accessible price, always proudly Nigerian. Whether it's the 70g pack in a market stall or the 2.5kg catering tin in a restaurant kitchen, Erisco delivers consistency you can stake your reputation on.
+        </p>
+        <div style="display:flex;flex-wrap:wrap;gap:12px;margin-bottom:32px;">
+          <span style="background:rgba(39,50,114,0.08);color:var(--navy);padding:8px 16px;border-radius:50px;font-size:0.8rem;font-weight:600;">Tomato Paste &amp; Mix</span>
+          <span style="background:rgba(39,50,114,0.08);color:var(--navy);padding:8px 16px;border-radius:50px;font-size:0.8rem;font-weight:600;">Erisco Tea Range</span>
+          <span style="background:rgba(39,50,114,0.08);color:var(--navy);padding:8px 16px;border-radius:50px;font-size:0.8rem;font-weight:600;">Ginger Drinks</span>
+          <span style="background:rgba(200,16,46,0.08);color:var(--red);padding:8px 16px;border-radius:50px;font-size:0.8rem;font-weight:600;">Est. 1981</span>
+        </div>
+        <a href="{{ url_for('products', category='tomato') }}" class="btn btn-navy">
+          <i class="fa fa-th-large"></i> Erisco Products
+        </a>
+      </div>
+
+      <div class="fade-up fade-up-delay-1">
+        <div style="background:linear-gradient(135deg,#273272 0%,#1a2255 60%,#C8102E 100%);border-radius:var(--radius-lg);padding:56px 40px;text-align:center;position:relative;overflow:hidden;">
+          <div style="position:absolute;top:-40px;right:-40px;width:200px;height:200px;border-radius:50%;background:rgba(255,255,255,0.05);"></div>
+          <div style="position:absolute;bottom:-60px;left:-30px;width:180px;height:180px;border-radius:50%;background:rgba(200,16,46,0.15);"></div>
+          <img src="{{ url_for('static', filename='img/erisco-logo.png') }}" alt="Erisco Brand" style="max-width:180px;margin:0 auto 24px;position:relative;z-index:2;" />
+          <div style="font-family:var(--font-display);font-size:1.8rem;font-weight:900;color:var(--white);margin-bottom:8px;position:relative;z-index:2;">The Erisco Promise</div>
+          <p style="color:rgba(255,255,255,0.7);font-size:0.9rem;position:relative;z-index:2;line-height:1.6;">Quality you can trust. Flavour you recognise. Made in Nigeria, for Nigeria.</p>
+          <div style="margin-top:24px;display:grid;grid-template-columns:1fr 1fr;gap:12px;position:relative;z-index:2;">
+            <div style="background:rgba(255,255,255,0.08);border-radius:var(--radius);padding:16px;">
+              <div style="font-family:var(--font-display);font-size:2rem;font-weight:900;color:var(--white);">6</div>
+              <div style="font-size:0.75rem;color:rgba(255,255,255,0.6);">Pack sizes available</div>
+            </div>
+            <div style="background:rgba(255,255,255,0.08);border-radius:var(--radius);padding:16px;">
+              <div style="font-family:var(--font-display);font-size:2rem;font-weight:900;color:var(--white);">#1</div>
+              <div style="font-size:0.75rem;color:rgba(255,255,255,0.6);">In Africa</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Brand 2: Nagiko -->
+<section class="section bg-light">
+  <div class="container">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;" class="mission-grid">
+      <div class="fade-up">
+        <div style="background:linear-gradient(135deg,#04681D 0%,#023d12 60%,#2ecc71 100%);border-radius:var(--radius-lg);padding:56px 40px;text-align:center;position:relative;overflow:hidden;">
+          <div style="position:absolute;top:-40px;right:-40px;width:200px;height:200px;border-radius:50%;background:rgba(255,255,255,0.05);"></div>
+          <div style="font-size:6rem;margin-bottom:16px;position:relative;z-index:2;"><img src="https://eriscofoodsltd.com.ng/wp-content/uploads/2025/02/milks.jpg" alt="Nagiko" style="max-width:120px;"/></div>
+          <div style="font-family:var(--font-display);font-size:3rem;font-weight:900;color:var(--white);margin-bottom:8px;position:relative;z-index:2;">Nagiko</div>
+          <p style="color:rgba(255,255,255,0.75);font-size:0.9rem;position:relative;z-index:2;line-height:1.6;">Nourishment first. Always.</p>
+          <div style="margin-top:24px;display:grid;grid-template-columns:1fr 1fr;gap:12px;position:relative;z-index:2;">
+            <div style="background:rgba(255,255,255,0.1);border-radius:var(--radius);padding:16px;">
+              <div style="font-size:1.5rem;margin-bottom:4px;"><i class="fa fa-award"></i></div>
+              <div style="font-size:0.75rem;color:rgba(255,255,255,0.7);">NAFDAC Certified</div>
+            </div>
+            <div style="background:rgba(255,255,255,0.1);border-radius:var(--radius);padding:16px;">
+              <div style="font-size:1.5rem;margin-bottom:4px;"><i class="fa fa-heart"></i></div>
+              <div style="font-size:0.75rem;color:rgba(255,255,255,0.7);">Fortified &amp; Nutritious</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="fade-up fade-up-delay-1">
+        <div class="section-label">Dairy &amp; Beverages</div>
+        <h2 class="section-title" style="font-size:clamp(2.5rem,5vw,4rem);">Nagiko</h2>
+        <p style="font-size:1.1rem;font-weight:600;color:var(--green);margin-bottom:20px;">Nourishment for Every Nigerian Family</p>
+        <p style="color:var(--mid-grey);font-size:1rem;line-height:1.8;margin-bottom:20px;">
+          Nagiko was born from a simple insight: Nigerian families deserve nutritious dairy products that don't stretch the budget. Every Nagiko product — from fat-filled milk powder to chocolate cubes — is formulated to deliver real nutritional value at an accessible price point.
+        </p>
+        <p style="color:var(--mid-grey);font-size:1rem;line-height:1.8;margin-bottom:32px;">
+          Whether it's the morning cup of Nagiko milk that starts a child's day or the hot chocolate that ends it, Nagiko is about the small, daily rituals of nourishment that make a family feel cared for.
+        </p>
+          <div style="display:flex;flex-wrap:wrap;gap:12px;margin-bottom:32px;">
+          <span style="background:rgba(4,104,29,0.08);color:var(--green);padding:8px 16px;border-radius:50px;font-size:0.8rem;font-weight:600;">Fat-Filled Milk Powder</span>
+          <span style="background:rgba(4,104,29,0.08);color:var(--green);padding:8px 16px;border-radius:50px;font-size:0.8rem;font-weight:600;">Chocolate Cubes</span>
+          <span style="background:rgba(4,104,29,0.08);color:var(--green);padding:8px 16px;border-radius:50px;font-size:0.8rem;font-weight:600;">Instant Drinks</span>
+        </div>
+        <a href="{{ url_for('products', category='milk') }}" class="btn btn-green">
+          <i class="fa fa-th-large"></i> Nagiko Products
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Brand 3: Ric-Giko -->
+<section class="section">
+  <div class="container">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;" class="mission-grid">
+      <div class="fade-up">
+        <div class="section-label">Seasoning &amp; Spice</div>
+        <h2 class="section-title" style="font-size:clamp(2.5rem,5vw,4rem);">Ric-Giko</h2>
+        <p style="font-size:1.1rem;font-weight:600;color:var(--red);margin-bottom:20px;">The Soul of Nigerian Cooking</p>
+        <p style="color:var(--mid-grey);font-size:1rem;line-height:1.8;margin-bottom:20px;">
+          No Nigerian dish is complete without the right seasoning. Ric-Giko seasoning cubes and spice blends are crafted to deliver the authentic depth of flavour that Nigerian cooks demand — not a generic approximation, but a genuine, bold taste that elevates every meal from good to unforgettable.
+        </p>
+        <p style="color:var(--mid-grey);font-size:1rem;line-height:1.8;margin-bottom:32px;">
+          Available in chicken, beef, and fish variants — plus a versatile herbs &amp; spices blend — Ric-Giko gives every cook, from the home kitchen to the professional catering operation, exactly what they need to produce authentic Nigerian food at its finest.
+        </p>
+        <div style="display:flex;flex-wrap:wrap;gap:12px;margin-bottom:32px;">
+          <span style="background:rgba(200,16,46,0.08);color:var(--red);padding:8px 16px;border-radius:50px;font-size:0.8rem;font-weight:600;">Chicken Cubes</span>
+          <span style="background:rgba(200,16,46,0.08);color:var(--red);padding:8px 16px;border-radius:50px;font-size:0.8rem;font-weight:600;">Beef Cubes</span>
+          <span style="background:rgba(200,16,46,0.08);color:var(--red);padding:8px 16px;border-radius:50px;font-size:0.8rem;font-weight:600;">Fish Cubes</span>
+          <span style="background:rgba(200,16,46,0.08);color:var(--red);padding:8px 16px;border-radius:50px;font-size:0.8rem;font-weight:600;">Herbs &amp; Spices</span>
+        </div>
+          <div style="display:flex;flex-wrap:wrap;gap:12px;margin-bottom:32px;">
+            <span style="background:rgba(200,16,46,0.08);color:var(--red);padding:8px 16px;border-radius:50px;font-size:0.8rem;font-weight:600;">Chicken Cubes</span>
+            <span style="background:rgba(200,16,46,0.08);color:var(--red);padding:8px 16px;border-radius:50px;font-size:0.8rem;font-weight:600;">Beef Cubes</span>
+            <span style="background:rgba(200,16,46,0.08);color:var(--red);padding:8px 16px;border-radius:50px;font-size:0.8rem;font-weight:600;">Fish Cubes</span>
+            <span style="background:rgba(200,16,46,0.08);color:var(--red);padding:8px 16px;border-radius:50px;font-size:0.8rem;font-weight:600;">Herbs &amp; Spices</span>
+          </div>
+        <a href="{{ url_for('products', category='seasoning') }}" class="btn btn-primary">
+          <i class="fa fa-th-large"></i> Ric-Giko Products
+        </a>
+      </div>
+
+      <div class="fade-up fade-up-delay-1">
+        <div style="background:linear-gradient(135deg,#C8102E 0%,#8b0000 60%,#e8a020 100%);border-radius:var(--radius-lg);padding:56px 40px;text-align:center;position:relative;overflow:hidden;">
+          <div style="position:absolute;top:-40px;right:-40px;width:200px;height:200px;border-radius:50%;background:rgba(255,255,255,0.05);"></div>
+            <div style="font-size:6rem;margin-bottom:16px;position:relative;z-index:2;"><img src="https://eriscofoodsltd.com.ng/wp-content/uploads/2025/01/2i.jpg" alt="Ric-Giko" style="max-width:120px;"/></div>
+          <div style="font-family:var(--font-display);font-size:2.8rem;font-weight:900;color:var(--white);margin-bottom:8px;position:relative;z-index:2;">Ric-Giko</div>
+          <p style="color:rgba(255,255,255,0.75);font-size:0.9rem;position:relative;z-index:2;line-height:1.6;">The bold flavour at the heart of Nigerian cuisine.</p>
+          <div style="margin-top:24px;display:grid;grid-template-columns:repeat(2,1fr);gap:12px;position:relative;z-index:2;">
+            {% for label in ["Chicken","Beef","Fish","Herbs"] %}
+            <div style="background:rgba(255,255,255,0.1);border-radius:var(--radius);padding:12px;font-size:0.8rem;color:rgba(255,255,255,0.85);font-weight:600;">
+              Ric-Giko {{ label }}
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Comparison Table -->
+<section class="section bg-light">
+  <div class="container">
+    <div class="text-center" style="margin-bottom:40px;">
+      <div class="section-label" style="justify-content:center;">Side by Side</div>
+      <h2 class="section-title">Which Brand is Right For You?</h2>
+    </div>
+    <div style="overflow-x:auto;">
+      <table style="width:100%;border-collapse:separate;border-spacing:0;background:var(--white);border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow-md);">
+        <thead>
+          <tr style="background:var(--navy);">
+            <th style="padding:20px 24px;text-align:left;color:rgba(255,255,255,0.6);font-size:0.8rem;text-transform:uppercase;letter-spacing:0.08em;font-weight:600;">Feature</th>
+            <th style="padding:20px 24px;text-align:center;color:var(--white);font-size:1rem;font-weight:700;">Erisco</th>
+            <th style="padding:20px 24px;text-align:center;color:var(--white);font-size:1rem;font-weight:700;">Nagiko</th>
+            <th style="padding:20px 24px;text-align:center;color:var(--white);font-size:1rem;font-weight:700;">Ric-Giko</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% set rows = [
+            ("Category","Tomato Paste, Tea, Beverages","Dairy & Chocolate, Drinks","Seasoning Cubes, Spices"),
+            ("Best For","Cooking base, beverages","Morning nutrition, treats","Flavouring &amp; seasoning"),
+            ("Key Products","Tomato paste 70g–2.5kg, Tea range","Milk powder, Chocolate cubes","Chicken, Beef, Fish cubes"),
+            ("NAFDAC Certified","Yes","Yes","Yes"),
+            ("Made in Nigeria","Yes","Yes","Yes"),
+          ] %}
+          {% for row in rows %}
+          <tr style="border-bottom:1px solid var(--light-grey);">
+            <td style="padding:18px 24px;font-size:0.875rem;font-weight:600;color:var(--dark-grey);">{{ row[0] }}</td>
+            <td style="padding:18px 24px;text-align:center;font-size:0.875rem;color:var(--mid-grey);">{{ row[1] }}</td>
+            <td style="padding:18px 24px;text-align:center;font-size:0.875rem;color:var(--mid-grey);">{{ row[2] }}</td>
+            <td style="padding:18px 24px;text-align:center;font-size:0.875rem;color:var(--mid-grey);">{{ row[3] }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

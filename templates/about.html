@@ -1,0 +1,171 @@
+{% extends "base.html" %}
+{% block title %}About Us — Erisco Foods Limited{% endblock %}
+
+{% block content %}
+
+<!-- Page Hero -->
+<div class="page-hero">
+  <div class="page-hero-blob page-hero-blob-1"></div>
+  <div class="page-hero-blob page-hero-blob-2"></div>
+  <div class="container">
+    <div class="page-hero-label">Our Story</div>
+    <h1>About <span>Erisco Foods</span></h1>
+    <p>From a single tomato paste plant in 1981 to Africa's most recognised indigenous food manufacturer — this is the story of a company built on Nigerian soil, Nigerian hands, and Nigerian ambition.</p>
+    <div class="breadcrumb">
+      <a href="{{ url_for('index') }}">Home</a>
+      <span>›</span>
+      <span>About Us</span>
+    </div>
+  </div>
+</div>
+
+<!-- Mission & Vision -->
+<section class="section">
+  <div class="container">
+    <div class="mission-grid">
+      <div class="fade-up">
+        <div class="section-label">Who We Are</div>
+        <h2 class="section-title">Nigeria's Most Trusted Food Manufacturer</h2>
+        <p style="color:var(--mid-grey);font-size:1rem;line-height:1.8;margin-bottom:20px;">
+          Erisco Foods Limited is the leading indigenous manufacturer of food products in Nigeria. Incorporated in 1981 and headquartered at KM 45 Lagos-Abeokuta Expressway, Sango-Otta, Ogun State, we have spent over four decades building something rare: a fully Nigerian food business that doesn't just compete with imports — it surpasses them.
+        </p>
+        <p style="color:var(--mid-grey);font-size:1rem;line-height:1.8;margin-bottom:32px;">
+          Our 450,000 metric tonne annual production capacity comes from a fully integrated supply chain: 2,500 hectares of cultivated farmland, state-of-the-art processing facilities, and a workforce of over 3,000 committed Nigerians. Every product we make — from our flagship tomato paste to our Erisco Tea range — carries NAFDAC certification and SON approval.
+        </p>
+        <div class="value-list">
+          <div class="value-item">
+            <div class="value-icon value-icon-navy"><i class="fa fa-bullseye"></i></div>
+            <div class="value-content">
+              <h4>Our Mission</h4>
+              <p>To produce the best quality and most affordable food products for Nigerian consumers, while building a supply chain that keeps value within Nigeria.</p>
+            </div>
+          </div>
+          <div class="value-item">
+            <div class="value-icon value-icon-red"><i class="fa fa-eye"></i></div>
+            <div class="value-content">
+              <h4>Our Vision</h4>
+              <p>To be the undisputed #1 food manufacturer in Africa — not by acquiring imports, but by growing, processing, and distributing Nigeria's own produce to the world.</p>
+            </div>
+          </div>
+          <div class="value-item">
+            <div class="value-icon value-icon-green"><i class="fa fa-gem"></i></div>
+            <div class="value-content">
+              <h4>Our Values</h4>
+              <p>Quality without compromise. Affordability without sacrifice. Pride in every product that carries the Erisco name — whether it goes to a Lagos market or an export container.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="fade-up fade-up-delay-1">
+        <div class="mission-image-bg">
+          <div class="mission-float">
+            <div class="number" style="font-size:1.2rem;">Est.</div>
+            <div class="number">1981</div>
+            <div class="label">Sango-Otta, Nigeria</div>
+          </div>
+          <div class="mission-image-content">
+            <div class="big-stat"><span>3K</span>+</div>
+            <p>Nigerians employed directly</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Key Facts -->
+<section class="stats-section">
+  <div class="container">
+    <div class="text-center" style="margin-bottom:48px;">
+      <h2 style="font-family:var(--font-display);font-size:clamp(1.8rem,3vw,2.5rem);font-weight:900;color:var(--white);">Erisco at a Glance</h2>
+    </div>
+    <div class="stats-grid">
+      <div class="stat-item fade-up">
+        <div class="stat-number"><span>450K</span></div>
+        <div style="font-size:0.85rem;color:rgba(255,255,255,0.4);margin-bottom:8px;">Metric Tonnes</div>
+        <div class="stat-label">Annual production capacity</div>
+      </div>
+      <div class="stat-item fade-up fade-up-delay-1">
+        <div class="stat-number"><span>2,500</span></div>
+        <div style="font-size:0.85rem;color:rgba(255,255,255,0.4);margin-bottom:8px;">Hectares</div>
+        <div class="stat-label">Cultivated Nigerian farmland</div>
+      </div>
+      <div class="stat-item fade-up fade-up-delay-2">
+        <div class="stat-number"><span>3,000<span class="stat-suffix">+</span></span></div>
+        <div style="font-size:0.85rem;color:rgba(255,255,255,0.4);margin-bottom:8px;">Employees</div>
+        <div class="stat-label">Nigerians directly employed</div>
+      </div>
+      <div class="stat-item fade-up fade-up-delay-3">
+        <div class="stat-number"><span>3</span></div>
+        <div style="font-size:0.85rem;color:rgba(255,255,255,0.4);margin-bottom:8px;">Brands</div>
+        <div class="stat-label">Erisco · Nagiko · Ric-Giko</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Certifications & Awards -->
+<section class="section bg-light">
+  <div class="container">
+    <div class="text-center" style="margin-bottom:48px;">
+      <div class="section-label" style="justify-content:center;">Quality Assurance</div>
+      <h2 class="section-title">Certified. Approved. Trusted.</h2>
+      <p class="section-subtitle" style="margin:0 auto;">Our certifications are not badges on a shelf — they are active, audited, and renewed because our customers deserve nothing less.</p>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:24px;">
+      {% set certs = [
+        ("<i class='fa fa-check-circle'></i>","NAFDAC Certified","National Agency for Food and Drug Administration and Control certification on every product category. Our facilities, ingredients, and processes are audited and approved.","#04681D"),
+        ("<i class='fa fa-award'></i>","SON Approved","Standards Organisation of Nigeria approval confirms our products meet Nigerian and international food safety standards without exception.","#273272"),
+        ("<i class='fa fa-globe'></i>","Export Ready","Our products meet the quality thresholds required for export to West African markets and beyond — same standards, whether the pack goes to Lagos or London.","#e8a020"),
+        ("<i class='fa fa-flask'></i>","In-House QA Lab","Our dedicated quality assurance laboratory runs batch-level testing throughout production. Every pack that leaves our facility has been tested.","#C8102E"),
+      ] %}
+      {% for icon, title, desc, color in certs %}
+      <div class="card fade-up" style="padding:32px;border-top:3px solid {{ color }};">
+        <div style="font-size:2.5rem;margin-bottom:16px;">{{ icon|safe }}</div>
+        <h4 style="font-weight:700;color:var(--navy);margin-bottom:10px;">{{ title }}</h4>
+        <p style="font-size:0.875rem;color:var(--mid-grey);line-height:1.7;">{{ desc }}</p>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- Team & Workforce -->
+<section class="section">
+  <div class="container">
+    <div class="text-center" style="margin-bottom:48px;">
+      <div class="section-label" style="justify-content:center;">Our People</div>
+      <h2 class="section-title">3,000 Reasons to Be Proud</h2>
+      <p class="section-subtitle" style="margin:0 auto;">
+        Behind every can of Erisco tomato paste and every pack of Ric-Giko cubes is a Nigerian worker — on the farm, in the factory, in logistics, and in sales. We're one of Nigeria's largest private employers.
+      </p>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:24px;margin-bottom:48px;">
+      {% set workforce = [
+        ("<i class='fa fa-seedling'></i>","Farm Workers","Our 2,500-hectare operation employs hundreds of dedicated agricultural workers managing Nigeria's most productive tomato cultivation."),
+        ("<i class='fa fa-industry'></i>","Factory Staff","Skilled production workers operate our state-of-the-art processing and packaging facilities around the clock."),
+        ("<i class='fa fa-truck'></i>","Logistics &amp; Distribution","A nationwide distribution network getting Erisco products from our Sango-Otta facility to markets across every state in Nigeria."),
+        ("<i class='fa fa-flask'></i>","R&amp;D &amp; Quality","Our research, development, and QA team continuously improves our products and maintains our certification standards."),
+      ] %}
+      {% for icon, title, desc in workforce %}
+      <div class="card fade-up" style="padding:28px;">
+        <div style="font-size:2rem;margin-bottom:12px;">{{ icon|safe }}</div>
+        <h4 style="font-weight:700;color:var(--navy);margin-bottom:8px;">{{ title }}</h4>
+        <p style="font-size:0.85rem;color:var(--mid-grey);line-height:1.7;">{{ desc }}</p>
+      </div>
+      {% endfor %}
+    </div>
+
+    <div style="background:linear-gradient(135deg,var(--navy),var(--navy-dark));border-radius:var(--radius-lg);padding:48px;text-align:center;color:var(--white);">
+      <p style="font-family:var(--font-display);font-size:clamp(1.3rem,2.5vw,1.8rem);font-weight:700;line-height:1.5;max-width:700px;margin:0 auto 24px;">
+        "We are not just a company. We are proof that Nigeria can feed Nigeria — and feed it well."
+      </p>
+      <p style="opacity:0.65;font-size:0.9rem;">Erisco Foods Leadership</p>
+    </div>
+  </div>
+</section>
+
+{% endblock %}
